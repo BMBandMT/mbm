@@ -3,6 +3,8 @@ import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
+import Container from "../components/container"
+import * as variable from "../components/variables"
 
 const HeroStyle = styled.div`
   #hero {
@@ -12,6 +14,9 @@ const HeroStyle = styled.div`
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 40px;
+    @media (max-width: ${variable.mobileWidth}) {
+      min-height: 650px;
+    }
     .hero-content {
       max-width: 550px;
       text-align: center;
@@ -26,6 +31,9 @@ const HeroStyle = styled.div`
         justify-content: center;
         align-items: center;
         margin: 20px 0px;
+        @media (max-width: ${variable.mobileWidth}) {
+          flex-direction: column;
+        }
         a {
           color: white;
           font-size: 15px;
@@ -34,9 +42,18 @@ const HeroStyle = styled.div`
           width: 150px;
           &.mt {
             text-align: right;
+            @media (max-width: ${variable.mobileWidth}) {
+              text-align: center;
+              margin-bottom: 20px;
+            }
           }
           &.bmb {
             text-align: left;
+            @media (max-width: ${variable.mobileWidth}) {
+              text-align: center;
+              margin-top: 20px;
+              margin-bottom: 20px;
+            }
           }
         }
         .hero-start {
@@ -48,6 +65,12 @@ const HeroStyle = styled.div`
           line-height: 26px;
           font-weight: 500;
           margin: 0px 20px;
+          display: inline-block;
+          width: auto;
+          &:hover {
+            color: black;
+            background-color: white;
+          }
         }
       }
       .hero-scroll {
@@ -106,32 +129,36 @@ const Hero = () => {
   return (
     <HeroStyle>
       <BackgroundImage id="hero" fluid={data.heroBg.childImageSharp.fluid}>
-        <div className="hero-content">
-          <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
-          <div className="hero-link-container">
-            <a
-              className="mt"
-              href="https://massivetherapeutics.com"
-              target="_blank"
-            >
-              Massive Therapeutics
-            </a>
-            <div className="hero-start">Get Started</div>
-            <a
-              className="bmb"
-              href="https://bluemountainbest.com"
-              target="_blank"
-            >
-              Blue Mountain Best
-            </a>
-          </div>
-          <div className="hero-scroll">
-            <div>Scroll to Learn More</div>
-            <div className="down-arrow">
-              <Img fixed={data.heroArrow.childImageSharp.fixed} />
+        <Container>
+          <div className="hero-content">
+            <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
+            <div className="hero-link-container">
+              <a
+                className="mt"
+                href="https://massivetherapeutics.com"
+                target="_blank"
+              >
+                Massive Therapeutics
+              </a>
+              <a href="#lpfooter" className="hero-start">
+                Get Started
+              </a>
+              <a
+                className="bmb"
+                href="https://bluemountainbest.com"
+                target="_blank"
+              >
+                Blue Mountain Best
+              </a>
+            </div>
+            <div className="hero-scroll">
+              <div>Scroll to Learn More</div>
+              <div className="down-arrow">
+                <Img fixed={data.heroArrow.childImageSharp.fixed} />
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </BackgroundImage>
     </HeroStyle>
   )

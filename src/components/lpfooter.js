@@ -3,7 +3,8 @@ import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
-
+import * as variable from "../components/variables"
+import down from "../images/downcaret.png"
 const LpfooterStyle = styled.div`
   #lpfooter {
     padding: 100px 0px 60px 0px;
@@ -19,8 +20,13 @@ const LpfooterStyle = styled.div`
       font-size: 17px;
       line-height: 23px;
       font-weight: 400;
-      span {
+      max-width: 815px;
+      margin: 0 auto 20px auto;
+      span.footer-mt {
         color: #23a455;
+      }
+      span.footer-bmb {
+        color: #164871;
       }
     }
     form {
@@ -37,8 +43,18 @@ const LpfooterStyle = styled.div`
         flex-wrap: wrap;
         align-items: center;
         margin-bottom: 40px;
+        @media (max-width: ${variable.mobileWidth}) {
+          flex-direction: column;
+        }
         label {
           width: 150px;
+          font-size: 17px;
+          line-height: 23px;
+          font-weight: bold;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+            text-align: center;
+          }
         }
         .form-row-inputs {
           width: calc(100% - 150px);
@@ -46,32 +62,69 @@ const LpfooterStyle = styled.div`
           justify-content: space-between;
           flex-wrap: wrap;
           align-items: center;
+          @media (max-width: ${variable.mobileWidth}) {
+            flex-direction: column;
+          }
+          &.form-row-inputs-certify {
+            @media (max-width: ${variable.mobileWidth}) {
+              flex-direction: row;
+            }
+          }
           &.form-row-inputs-name {
             input {
               width: calc(100% / 2 - 10px);
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
             }
           }
           &.form-row-inputs-city {
             input {
               width: calc(100% / 3 - 10px);
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
             }
           }
           &.form-row-inputs-email {
             justify-content: flex-start;
             input {
               width: calc(100% / 2 - 10px);
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
             }
           }
           &.form-row-inputs-phone {
             justify-content: flex-start;
             input {
               width: calc(100% / 2 - 10px);
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
             }
           }
           &.form-row-inputs-hear {
             justify-content: flex-start;
             select {
               width: calc(100% / 2 - 10px);
+              position: relative;
+              &:before {
+                content: "\u2193";
+                font-size: 20px;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                color: black;
+              }
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
             }
           }
           &.form-row-inputs-submit {
@@ -86,10 +139,20 @@ const LpfooterStyle = styled.div`
               display: flex;
               align-items: center;
               position: relative;
+              @media (max-width: ${variable.mobileWidth}) {
+                width: 100%;
+                margin: 10px 0px;
+              }
               input {
                 height: 50px;
                 margin: 0px;
                 cursor: pointer;
+                &:checked {
+                  border: #23a455 2px solid;
+                }
+                &:focus {
+                  outline: none;
+                }
               }
               div {
                 position: absolute;
@@ -97,6 +160,7 @@ const LpfooterStyle = styled.div`
                 margin-left: -40px;
                 width: 80px;
                 text-align: center;
+                z-index: -10;
               }
             }
           }
@@ -106,14 +170,17 @@ const LpfooterStyle = styled.div`
           width: 100%;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
           }
         }
         input[type="email"] {
@@ -121,14 +188,17 @@ const LpfooterStyle = styled.div`
           width: 100%;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
           }
         }
         input[type="phone"] {
@@ -136,14 +206,17 @@ const LpfooterStyle = styled.div`
           width: 100%;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
           }
         }
         input[type="radio"] {
@@ -151,14 +224,17 @@ const LpfooterStyle = styled.div`
           width: 100%;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
           }
         }
         input[type="checkbox"] {
@@ -167,21 +243,42 @@ const LpfooterStyle = styled.div`
           border: 2px solid #000000;
           margin-right: 5px;
           padding: 5px;
+          position: relative;
+          margin-right: 15px;
+          &:checked {
+            &:before {
+              content: "x";
+              position: absolute;
+              top: -3px;
+              left: 2px;
+            }
+          }
+          &:focus {
+            outline: none;
+          }
         }
         input.contact-submit {
           background: transparent;
           color: #000000;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
           display: inline-block;
+          cursor: pointer;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
+          }
+          &:hover {
+            color: white;
+            background-color: #000000;
           }
         }
         select {
@@ -189,14 +286,21 @@ const LpfooterStyle = styled.div`
           width: 100%;
           -webkit-appearance: none;
           border: 2px solid #000000;
-          border-radius: 7px;
+          border-radius: 5px;
           padding: 15px 20px;
           font-size: 17px;
-          font-weight: 300;
+          font-weight: 400;
+          background-image: url(${down});
+          background-size: 20px;
+          background-position: right 20px center;
+          background-repeat: no-repeat;
+          &:focus {
+            outline: none;
+          }
           &::placeholder {
             color: #000000;
             font-size: 17px;
-            font-weight: 300;
+            font-weight: 400;
           }
         }
         .hidden {
@@ -209,6 +313,10 @@ const LpfooterStyle = styled.div`
           padding: 12px 70px;
           font-size: 21px;
           margin-top: 25px;
+          font-weight: bold;
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
@@ -240,10 +348,12 @@ const LpFooter = () => {
           <h2>A unique opportunity for accredited investors.</h2>
           <div className="form-copy">
             <p>
-              Investing in <span>Massive Therapeutics</span> guarantees a stake
-              in cannabis production as the global industry looks to Jamaica,
-              while investment in Blue Mountain Best secures profits from a
-              luxury estate primed for worldwide retail growth.
+              Investing in{" "}
+              <span className="footer-mt">Massive Therapeutics</span> guarantees
+              a stake in cannabis production as the global industry looks to
+              Jamaica, while investment in{" "}
+              <span className="footer-bmb">Blue Mountain Best</span> secures
+              profits from a luxury estate primed for worldwide retail growth.
             </p>
             <p>
               If you’re an accredited investor, fill out the form below and our
@@ -326,7 +436,7 @@ const LpFooter = () => {
               <label>How did you hear about us?*</label>
               <div className="form-row-inputs form-row-inputs-hear">
                 <select name="hear" id="hear" required>
-                  <option value="">Select</option>
+                  <option value="">Select...</option>
                   <option value="friend">Friend</option>
                   <option value="google">Google</option>
                 </select>

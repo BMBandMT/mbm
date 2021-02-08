@@ -5,23 +5,34 @@ import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
 import YouTube from "react-youtube"
+import * as variable from "../components/variables"
 
 const MtStyle = styled.div`
   #mt {
     padding: 200px 0px;
     min-height: 800px;
     color: white;
+    @media (max-width: ${variable.mobileWidth}) {
+      padding: 100px 0px;
+    }
     .mt-top-2 {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
+      @media (max-width: ${variable.mobileWidth}) {
+        flex-direction: column;
+      }
       div {
         &:nth-child(1) {
           width: 50%;
           font-size: 28px;
           line-height: 37px;
           font-weight: 500;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+            margin-bottom: 20px;
+          }
           span {
             color: #23a455;
             font-weight: 900;
@@ -29,6 +40,9 @@ const MtStyle = styled.div`
         }
         &:nth-child(2) {
           width: 45%;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+          }
           p {
             margin-top: 0px;
             font-size: 18px;
@@ -47,11 +61,18 @@ const MtStyle = styled.div`
       justify-content: space-between;
       align-items: center;
       padding: 70px 0px;
+      @media (max-width: ${variable.mobileWidth}) {
+        flex-direction: column;
+      }
       .mt-top-3-item {
         width: calc(100% / 3 - 20px);
         font-size: 18px;
         line-height: 24px;
         font-weight: 400;
+        @media (max-width: ${variable.mobileWidth}) {
+          width: 100%;
+          margin: 20px 0px;
+        }
         .mt-top-3-item-inner {
           :nth-child(1) {
             margin-bottom: 55px;
@@ -108,12 +129,19 @@ const MtStyle = styled.div`
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: flex-start;
+      @media (max-width: ${variable.mobileWidth}) {
+        flex-direction: column;
+      }
       div {
         &:nth-child(1) {
           width: 50%;
           font-size: 28px;
           line-height: 37px;
           font-weight: 500;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+            margin-bottom: 20px;
+          }
           span {
             color: #164871;
             font-weight: 900;
@@ -121,6 +149,9 @@ const MtStyle = styled.div`
         }
         &:nth-child(2) {
           width: 45%;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+          }
           p {
             margin-top: 0px;
             font-size: 18px;
@@ -139,11 +170,18 @@ const MtStyle = styled.div`
       justify-content: space-between;
       align-items: center;
       padding: 70px 0px;
+      @media (max-width: ${variable.mobileWidth}) {
+        flex-direction: column;
+      }
       .bmb-bottom-3-item {
         width: calc(100% / 3 - 20px);
         font-size: 18px;
         line-height: 24px;
         font-weight: 400;
+        @media (max-width: ${variable.mobileWidth}) {
+          width: 100%;
+          margin: 20px 0px;
+        }
         .bmb-bottom-3-item-inner {
           :nth-child(1) {
             margin-bottom: 55px;

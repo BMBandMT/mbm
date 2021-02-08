@@ -5,12 +5,16 @@ import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/container"
 import handleViewport from "react-in-viewport"
+import * as variable from "../components/variables"
 
 const JamaicaStyle = styled.div`
   #jamaica {
     padding: 175px 0px 100px 0px;
     color: white;
     text-align: center;
+    @media (max-width: ${variable.mobileWidth}) {
+      padding: 50px 0px 50px 0px;
+    }
     h2 {
       margin: 0px;
       text-align: center;
@@ -23,11 +27,17 @@ const JamaicaStyle = styled.div`
       align-items: flex-start;
       justify-content: space-between;
       margin: 80px 0px;
+      flex-wrap: wrap;
+
       > div {
         width: calc(100% / 3 - 25px);
         font-size: 18px;
         line-height: 24px;
         font-weight: 400;
+        @media (max-width: ${variable.mobileWidth}) {
+          width: 100%;
+          margin-bottom: 40px;
+        }
         .jamaica-top-large {
           font-size: 28px;
           font-weight: 500;
@@ -38,6 +48,7 @@ const JamaicaStyle = styled.div`
     .jamaica-mid-2 {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       div {
         &:first-child {
           font-size: 28px;
@@ -45,6 +56,9 @@ const JamaicaStyle = styled.div`
           font-weight: 500;
           text-align: left;
           width: 50%;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+          }
         }
         &:last-child {
           font-size: 18px;
@@ -52,6 +66,9 @@ const JamaicaStyle = styled.div`
           font-weight: 400;
           text-align: left;
           width: 48%;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+          }
         }
       }
     }
@@ -66,6 +83,7 @@ const JamaicaStyle = styled.div`
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
+      flex-wrap: wrap;
       > div {
         width: calc(100% / 3 - 25px);
         font-size: 18px;
@@ -78,6 +96,10 @@ const JamaicaStyle = styled.div`
           font-size: 28px;
           font-weight: 500;
           margin-bottom: 10px;
+        }
+        @media (max-width: ${variable.mobileWidth}) {
+          width: 100% !important;
+          margin-bottom: 40px;
         }
       }
     }
