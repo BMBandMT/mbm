@@ -91,6 +91,38 @@ const HeroStyle = styled.div`
       }
     }
   }
+  .hero-container {
+    position: relative;
+  }
+  .left-scroll {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    height: 100px;
+    display: flex;
+    width: 75px;
+    align-items: center;
+    @media (max-width: ${variable.mobileWidth}) {
+      left: 40px;
+    }
+    .gatsby-image-wrapper {
+      height: 90px !important;
+      width: 30px !important;
+    }
+    img {
+      height: 100%;
+      width: auto;
+    }
+    .scroll {
+      transform: rotate(-90deg);
+      height: 10px;
+      position: relative;
+      left: 15px;
+      top: -5px;
+      font-weight: 300;
+      font-size: 15px;
+    }
+  }
   @keyframes bounce {
     0%,
     20%,
@@ -129,7 +161,7 @@ const Hero = () => {
   return (
     <HeroStyle>
       <BackgroundImage id="hero" fluid={data.heroBg.childImageSharp.fluid}>
-        <Container>
+        <Container className="hero-container">
           <div className="hero-content">
             <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
             <div className="hero-link-container">
@@ -159,6 +191,10 @@ const Hero = () => {
             </div>
           </div>
         </Container>
+        <div className="left-scroll">
+          <div className="scroll">Scroll</div>
+          <Img fixed={data.heroArrow.childImageSharp.fixed} />
+        </div>
       </BackgroundImage>
     </HeroStyle>
   )

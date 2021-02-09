@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
 import YouTube from "react-youtube"
 import * as variable from "../components/variables"
-
+import handleViewport from "react-in-viewport"
 const MtStyle = styled.div`
   #mt {
     padding: 200px 0px;
@@ -64,6 +64,16 @@ const MtStyle = styled.div`
       @media (max-width: ${variable.mobileWidth}) {
         flex-direction: column;
       }
+      .mt-top-3-item-right {
+        .mt-top-3-item-inner {
+          padding-right: 20px;
+        }
+      }
+      .mt-top-3-item-left {
+        .mt-top-3-item-inner {
+          padding-left: 20px;
+        }
+      }
       .mt-top-3-item {
         width: calc(100% / 3 - 20px);
         font-size: 18px;
@@ -94,6 +104,8 @@ const MtStyle = styled.div`
     .mt-video {
       text-align: center;
       padding: 20px 0px;
+      max-width: 585px;
+      margin: 0 auto;
     }
     .mt-secure {
       padding: 100px 0px;
@@ -173,11 +185,36 @@ const MtStyle = styled.div`
       @media (max-width: ${variable.mobileWidth}) {
         flex-direction: column;
       }
+      .bmb-bottom-3-item-right {
+        .bmb-bottom-3-item-inner {
+          padding-right: 20px;
+        }
+        &.leftcentergrow-initial {
+          &:after {
+            background-color: #164871;
+          }
+        }
+      }
+      .bmb-bottom-3-item-left {
+        .bmb-bottom-3-item-inner {
+          padding-left: 20px;
+        }
+        &.leftcentergrow-initial {
+          &:after {
+            background-color: #164871;
+          }
+        }
+      }
       .bmb-bottom-3-item {
         width: calc(100% / 3 - 20px);
         font-size: 18px;
         line-height: 24px;
         font-weight: 400;
+        &.leftcentergrow-initial {
+          &:after {
+            background-color: #164871;
+          }
+        }
         @media (max-width: ${variable.mobileWidth}) {
           width: 100%;
           margin: 20px 0px;
@@ -203,9 +240,191 @@ const MtStyle = styled.div`
     .bmb-video {
       text-align: center;
       padding: 20px 0px;
+      max-width: 585px;
+      margin: 0 auto;
     }
   }
+  iframe {
+    max-width: 100%;
+  }
 `
+const mtLeft = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "leftgrow" : ""
+  return (
+    <div className={`mt-left leftgrow-initial ` + htmlClass} ref={forwardedRef}>
+      <span>Massive Therapeutics</span> is a medical and recreational cannabis
+      producer based in Jamaica, ready to supply the global industry with
+      affordable cannabis.
+    </div>
+  )
+}
+
+const mtLeftCenter = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "leftcentergrow" : ""
+  return (
+    <div className={`leftcentergrow-initial ` + htmlClass} ref={forwardedRef}>
+      <div className="mt-top-3-item-inner">
+        <div className="mt-top-3-header">50</div>
+        Massive Therapeutics will scale to 50 modern hybrid cannabis greenhouses
+        in three years.
+      </div>
+      <div className="mt-top-3-item-inner">
+        <div className="mt-top-3-header">$46 million</div>
+        Massive Therapeutics’ greenhouses will grow nearly 25 million grams of
+        cannabis each year, a wholesale value of over $46 million.
+      </div>
+    </div>
+  )
+}
+
+const mtRightCenter = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "rightcentergrow" : ""
+  return (
+    <div className={`rightcentergrow-initial ` + htmlClass} ref={forwardedRef}>
+      <div className="mt-top-3-item-inner">
+        <div className="mt-top-3-header">$100</div>
+        Massive Therapeutics’ expenses to grow one pound of cannabis amount to
+        $100. In Canada, costs exceed $400 for the same amount
+      </div>
+      <div className="mt-top-3-item-inner">
+        <div className="mt-top-3-header">30%</div>
+        As a result, Massive Therapeutics can sell cannabis at roughly 30% the
+        wholesale cannabis price in North America.
+      </div>
+    </div>
+  )
+}
+
+const mtVideo = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "squaregrow" : ""
+  return (
+    <div
+      className={`mt-video squaregrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
+      <YouTube videoId="q8nNmqFWtCM" opts={opts} />
+      <span class="focus-border">
+        <i></i>
+      </span>
+    </div>
+  )
+}
+
+const mtSecureHeader = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "centergrow" : ""
+  return (
+    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
+      <div className="mt-secure-header">
+        Secure a stake in global cannabis growth. Invest in a historic luxury
+        product.
+      </div>
+    </div>
+  )
+}
+
+const bmbLeft = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "leftgrow" : ""
+  return (
+    <div className={`leftgrow-initial ` + htmlClass} ref={forwardedRef}>
+      <span>Blue Mountain Best</span> is a producer and processor of Jamaican
+      Blue Mountain coffee, championing equity for small farmers and worldwide
+      retail growth for a historic luxury product.
+    </div>
+  )
+}
+
+const bmbLeftCenter = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "leftcentergrow" : ""
+  return (
+    <div
+      className={
+        `bmb-bottom-3-item bmb-bottom-3-item-left leftcentergrow-initial ` +
+        htmlClass
+      }
+      ref={forwardedRef}
+    >
+      <div className="bmb-bottom-3-item-inner">
+        <div className="bmb-bottom-3-header">500</div>
+        Blue Mountain Best will operate among the largest coffee growing estates
+        in the Blue Mountains, totaling over 500 acres.
+      </div>
+      <div className="bmb-bottom-3-item-inner">
+        <div className="bmb-bottom-3-header">1,000+</div>
+        As a coffee processor, Blue Mountain Best partners with over 400 small
+        family farmers in the Blue Mountains, together totaling over 1,000
+        acres.
+      </div>
+    </div>
+  )
+}
+
+const bmbRightCenter = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "rightcentergrow" : ""
+  return (
+    <div
+      className={
+        `bmb-bottom-3-item bmb-bottom-3-item-right rightcentergrow-initial ` +
+        htmlClass
+      }
+      ref={forwardedRef}
+    >
+      <div className="bmb-bottom-3-item-inner">
+        <div className="bmb-bottom-3-header">2.5x</div>
+        Blue Mountain Best’s coffee production more than doubles the region’s
+        average, while working to improve cultivation on small farms.
+      </div>
+      <div className="bmb-bottom-3-item-inner">
+        <div className="bmb-bottom-3-header">850k</div>
+        At full potential, Blue Mountian Best will export over 850,000 pounds of
+        certified Blue Mountain coffee each year, a retail value over $70
+        million.
+      </div>
+    </div>
+  )
+}
+
+const bmbVideo = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "squaregrow" : ""
+  return (
+    <div
+      className={`bmb-video squaregrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
+      <YouTube videoId="v_sTDh5rOag" opts={opts} />
+      <span class="focus-border">
+        <i></i>
+      </span>
+    </div>
+  )
+}
+
+const MtLeftBlock = handleViewport(mtLeft)
+
+const MtLeftCenterBlock = handleViewport(mtLeftCenter)
+
+const MtRightCenterBlock = handleViewport(mtRightCenter)
+
+const MtVideoBlock = handleViewport(mtVideo)
+
+const MtSecureHeaderBlock = handleViewport(mtSecureHeader)
+
+const BmbLeftBlock = handleViewport(bmbLeft)
+
+const BmbLeftCenterBlock = handleViewport(bmbLeftCenter)
+
+const BmbRightCenterBlock = handleViewport(bmbRightCenter)
+
+const BmbVideoBlock = handleViewport(bmbVideo)
+
 const opts = {
   width: "500",
   height: "285",
@@ -241,11 +460,7 @@ const Mt = () => {
       <BackgroundImage id="mt" fluid={data.mtBg.childImageSharp.fluid}>
         <Container>
           <div className="mt-top-2">
-            <div>
-              <span>Massive Therapeutics</span> is a medical and recreational
-              cannabis producer based in Jamaica, ready to supply the global
-              industry with affordable cannabis.
-            </div>
+            <MtLeftBlock />
             <div>
               <p>
                 Massive Therapeutics’ ability to cultivate cost-effectively in
@@ -262,43 +477,19 @@ const Mt = () => {
             </div>
           </div>
           <div className="mt-top-3">
-            <div className="mt-top-3-item">
-              <div className="mt-top-3-item-inner">
-                <div className="mt-top-3-header">50</div>
-                Massive Therapeutics will scale to 50 modern hybrid cannabis
-                greenhouses in three years.
-              </div>
-              <div className="mt-top-3-item-inner">
-                <div className="mt-top-3-header">$46 million</div>
-                Massive Therapeutics’ greenhouses will grow nearly 25 million
-                grams of cannabis each year, a wholesale value of over $46
-                million.
-              </div>
+            <div className="mt-top-3-item mt-top-3-item-left">
+              <MtLeftCenterBlock />
             </div>
             <div className="mt-top-3-item mt-top-3-item-center">
               <Img fluid={data.mtLogo.childImageSharp.fluid} />
             </div>
             <div className="mt-top-3-item mt-top-3-item-right">
-              <div className="mt-top-3-item-inner">
-                <div className="mt-top-3-header">$100</div>
-                Massive Therapeutics’ expenses to grow one pound of cannabis
-                amount to $100. In Canada, costs exceed $400 for the same amount
-              </div>
-              <div className="mt-top-3-item-inner">
-                <div className="mt-top-3-header">30%</div>
-                As a result, Massive Therapeutics can sell cannabis at roughly
-                30% the wholesale cannabis price in North America.
-              </div>
+              <MtRightCenterBlock />
             </div>
           </div>
-          <div className="mt-video">
-            <YouTube videoId="q8nNmqFWtCM" opts={opts} />
-          </div>
+          <MtVideoBlock />
           <div className="mt-secure">
-            <div className="mt-secure-header">
-              Secure a stake in global cannabis growth. Invest in a historic
-              luxury product.
-            </div>
+            <MtSecureHeaderBlock />
             <p>
               Directly invest in Massive Therapeutics and Blue Mountain Best. Or
               broker a modern hybrid greenhouse, parcel of coffee acreage, or
@@ -307,11 +498,7 @@ const Mt = () => {
             <a href="#">Get Started</a>
           </div>
           <div className="bmb-bottom-2">
-            <div>
-              <span>Blue Mountain Best</span> is a producer and processor of
-              Jamaican Blue Mountain coffee, championing equity for small
-              farmers and worldwide retail growth for a historic luxury product.
-            </div>
+            <BmbLeftBlock />
             <div>
               <p>
                 Blue Mountain Best uses farm syndication to bring equitable
@@ -328,40 +515,13 @@ const Mt = () => {
             </div>
           </div>
           <div className="bmb-bottom-3">
-            <div className="bmb-bottom-3-item">
-              <div className="bmb-bottom-3-item-inner">
-                <div className="bmb-bottom-3-header">500</div>
-                Blue Mountain Best will operate among the largest coffee growing
-                estates in the Blue Mountains, totaling over 500 acres.
-              </div>
-              <div className="bmb-bottom-3-item-inner">
-                <div className="bmb-bottom-3-header">1,000+</div>
-                As a coffee processor, Blue Mountain Best partners with over 400
-                small family farmers in the Blue Mountains, together totaling
-                over 1,000 acres.
-              </div>
-            </div>
+            <BmbLeftCenterBlock />
             <div className="bmb-bottom-3-item bmb-bottom-3-item-center">
               <Img fluid={data.bmbLogo.childImageSharp.fluid} />
             </div>
-            <div className="bmb-bottom-3-item bmb-bottom-3-item-right">
-              <div className="bmb-bottom-3-item-inner">
-                <div className="bmb-bottom-3-header">2.5x</div>
-                Blue Mountain Best’s coffee production more than doubles the
-                region’s average, while working to improve cultivation on small
-                farms.
-              </div>
-              <div className="bmb-bottom-3-item-inner">
-                <div className="bmb-bottom-3-header">850k</div>
-                At full potential, Blue Mountian Best will export over 850,000
-                pounds of certified Blue Mountain coffee each year, a retail
-                value over $70 million.
-              </div>
-            </div>
+            <BmbRightCenterBlock />
           </div>
-          <div className="bmb-video">
-            <YouTube videoId="v_sTDh5rOag" opts={opts} />
-          </div>
+          <BmbVideoBlock />
         </Container>
       </BackgroundImage>
     </MtStyle>

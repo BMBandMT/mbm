@@ -14,6 +14,11 @@ const LpfooterStyle = styled.div`
       font-size: 24px;
       line-height: 32px;
       font-weight: 700;
+      border-bottom: 2px solid #000000;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
     p {
       text-align: center;

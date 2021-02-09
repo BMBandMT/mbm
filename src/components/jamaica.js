@@ -73,7 +73,7 @@ const JamaicaStyle = styled.div`
       }
     }
     h3 {
-      margin: 150px 0px 90px 0px;
+      margin: 150px 0px 0px 0px;
       text-align: center;
       font-size: 28px;
       line-height: 37px;
@@ -84,6 +84,7 @@ const JamaicaStyle = styled.div`
       align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
+      margin-top: 90px;
       > div {
         width: calc(100% / 3 - 25px);
         font-size: 18px;
@@ -104,21 +105,8 @@ const JamaicaStyle = styled.div`
       }
     }
   }
-  .jamaica-title {
-    display: inline-block;
-    &:after {
-      display: block;
-      content: "";
-      border-bottom: solid 2px #ffffff;
-      transform: scaleX(0);
-      transition: transform 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      margin-top: 5px;
-    }
-    &.centergrow {
-      &:after {
-        transform: scaleX(1);
-      }
-    }
+  .jamaica-invest {
+    padding: 50px 20px;
   }
 `
 
@@ -126,13 +114,58 @@ const jamaicaTitle = props => {
   const { inViewport, forwardedRef } = props
   const htmlClass = inViewport ? "centergrow" : ""
   return (
-    <div className={`jamaica-title ` + htmlClass} ref={forwardedRef}>
+    <div
+      className={`jamaica-title centergrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
       <h2>Jamaica is poised to supply the global cannabis market.</h2>
     </div>
   )
 }
 
+const jamaicaInvest = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "squaregrow" : ""
+  return (
+    <div
+      className={`jamaica-invest  squaregrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
+      <div className="jamaica-mid-2">
+        <div>
+          Massive Therapeutics and Blue Mountain Best are revolutioning
+          investment in Jamaic's Blue Mountains.
+        </div>
+        <div>
+          investment in Massive Therapeutics and Blue Mountain Best ties the
+          market potentials of legal cannabis to the global revenues of
+          exclusive luxory coffee. Together, we accelerate Jamaica's potential
+          to lead the cannabis industry and advance global retail growth for the
+          island's historic coffee.
+        </div>
+      </div>
+      <span class="focus-border">
+        <i></i>
+      </span>
+    </div>
+  )
+}
+
+const jamaicaTitle2 = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "centergrow" : ""
+  return (
+    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
+      <h3>Worldwide Growth for Luxury Blue Mountain Coffee</h3>
+    </div>
+  )
+}
+
 const JamaicaBlock = handleViewport(jamaicaTitle)
+
+const JamaicaInvestBlock = handleViewport(jamaicaInvest)
+
+const JamaicaBlock2 = handleViewport(jamaicaTitle2)
 
 const Jamaica = () => {
   const data = useStaticQuery(graphql`
@@ -171,20 +204,8 @@ const Jamaica = () => {
               cannabis supply chain.
             </div>
           </div>
-          <div className="jamaica-mid-2">
-            <div>
-              Massive Therapeutics and Blue Mountain Best are revolutioning
-              investment in Jamaic's Blue Mountains.
-            </div>
-            <div>
-              investment in Massive Therapeutics and Blue Mountain Best ties the
-              market potentials of legal cannabis to the global revenues of
-              exclusive luxory coffee. Together, we accelerate Jamaica's
-              potential to lead the cannabis industry and advance global retail
-              growth for the island's historic coffee.
-            </div>
-          </div>
-          <h3>Worldwide Growth for Luxury Blue Mountain Coffee</h3>
+          <JamaicaInvestBlock />
+          <JamaicaBlock2 />
           <div className="jamaica-bottom-3">
             <div>
               <div className="jamaica-bottom-large">$120/lb</div>
