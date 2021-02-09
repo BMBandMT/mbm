@@ -189,7 +189,7 @@ const MtStyle = styled.div`
         .bmb-bottom-3-item-inner {
           padding-right: 20px;
         }
-        &.leftcentergrow-initial {
+        &.rightcentergrow-initial {
           &:after {
             background-color: #164871;
           }
