@@ -14,11 +14,17 @@ const NdaFormStyle = styled.div`
       font-size: 24px;
       line-height: 32px;
       font-weight: 700;
-      border-bottom: 2px solid #000000;
       max-width: 500px;
       margin: 0 auto;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      padding-bottom: 3px;
+    }
+    .centergrow-initial {
+      margin: 0 auto;
+      max-width: 500px;
+      display: block;
+      &:after {
+        border-bottom: solid 2px #000000;
+      }
     }
     p {
       text-align: center;
@@ -26,7 +32,7 @@ const NdaFormStyle = styled.div`
       line-height: 23px;
       font-weight: 400;
       max-width: 815px;
-      margin: 0 auto 20px auto;
+      margin: 20px auto 0px auto;
       span.footer-mt {
         color: #23a455;
       }
@@ -41,18 +47,23 @@ const NdaFormStyle = styled.div`
       flex-direction: column;
       max-width: 730px;
       margin: 40px auto;
+      position: relative;
+      left: -80px;
+      @media (max-width: ${variable.tabletWidth}) {
+        left: auto;
+      }
       .form-row {
         width: 100%;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 40px;
+        margin-bottom: 24px;
         @media (max-width: ${variable.mobileWidth}) {
           flex-direction: column;
         }
         label {
-          width: 150px;
+          width: 160px;
           font-size: 17px;
           line-height: 23px;
           font-weight: bold;
@@ -62,7 +73,7 @@ const NdaFormStyle = styled.div`
           }
         }
         .form-row-inputs {
-          width: calc(100% - 150px);
+          width: calc(100% - 160px);
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
@@ -149,7 +160,7 @@ const NdaFormStyle = styled.div`
                 margin: 10px 0px;
               }
               input {
-                height: 50px;
+                height: 41px;
                 margin: 0px;
                 cursor: pointer;
                 &:checked {
@@ -176,7 +187,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 9px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -194,7 +205,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 9px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -212,7 +223,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 9px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -230,7 +241,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 9px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -268,7 +279,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 15px 40px;
           font-size: 17px;
           font-weight: 400;
           display: inline-block;
@@ -292,7 +303,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 20px;
+          padding: 9px 20px;
           font-size: 17px;
           font-weight: 400;
           background-image: url(${down});
@@ -317,7 +328,6 @@ const NdaFormStyle = styled.div`
           background-color: #1e5b8d;
           padding: 12px 70px;
           font-size: 21px;
-          margin-top: 25px;
           font-weight: bold;
           &:focus {
             outline: none;
@@ -334,7 +344,7 @@ const opts = {
 const NdaForm = () => {
   const data = useStaticQuery(graphql`
     query NdaFormQuery {
-      footerBg: file(relativePath: { eq: "LPFooterTrans.png" }) {
+      footerBg: file(relativePath: { eq: "NDAFormBackground.png" }) {
         childImageSharp {
           fluid(maxWidth: 3840) {
             ...GatsbyImageSharpFluid
@@ -385,12 +395,14 @@ const NdaForm = () => {
                   id="firstname"
                   name="firstname"
                   placeholder="First"
+                  required
                 />
                 <input
                   type="text"
                   id="lastname"
                   name="lastname"
                   placeholder="Last"
+                  required
                 />
               </div>
             </div>
@@ -426,7 +438,7 @@ const NdaForm = () => {
               </div>
             </div>
             <div className="form-row">
-              <label>Your Email*</label>
+              <label>Your Phone*</label>
               <div className="form-row-inputs form-row-inputs-phone">
                 <input
                   type="phone"
@@ -442,8 +454,18 @@ const NdaForm = () => {
               <div className="form-row-inputs form-row-inputs-hear">
                 <select name="hear" id="hear" required>
                   <option value="">Select...</option>
-                  <option value="friend">Friend</option>
-                  <option value="google">Google</option>
+                  <option value="Forbes">Forbes</option>
+                  <option value="Reuters">Reuters</option>
+                  <option value="Entrepreneur">Entrepreneur</option>
+                  <option value="Benzinga">Benzinga</option>
+                  <option value="CEO Magazine">CEO Magazine</option>
+                  <option value="Google">Google</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="YouTube">YouTube</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Email">Email</option>
+                  <option value="Referral">Referral</option>
                 </select>
               </div>
             </div>
@@ -471,8 +493,8 @@ const NdaForm = () => {
             <div className="form-row">
               <label></label>
               <div className="form-row-inputs form-row-inputs-certify">
-                <input type="checkbox" id="certify" name="certify" /> *I certify
-                that I am an accredited investor.
+                <input type="checkbox" id="certify" name="certify" required />{" "}
+                *I certify that I am an accredited investor.
               </div>
             </div>
             <div className="form-row">

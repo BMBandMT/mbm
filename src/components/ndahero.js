@@ -6,7 +6,62 @@ import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
 import * as variable from "./variables"
 
-const HeroStyle = styled.div``
+const HeroStyle = styled.div`
+  #nda-hero {
+    .hero-container {
+      min-height: 450px;
+      display: flex;
+      align-items: flex-end;
+      color: white;
+      .hero-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 100px;
+        .mtlogo {
+          .gatsby-image-wrapper {
+            width: 115px !important;
+            height: 113px !important;
+          }
+        }
+        .bmblogo {
+          .gatsby-image-wrapper {
+            width: 118px !important;
+            height: 113px !important;
+          }
+        }
+        .ndainvestcontainer {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          .ndaheroheader {
+            font-size: 42px;
+            font-weight: bold;
+          }
+          .ndaherounderheader {
+            font-size: 32px;
+            font-weight: 500;
+          }
+          .ndahero-container-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .inner-mt {
+              font-weight: 300;
+            }
+            .circle {
+              margin: 0px 40px;
+              font-size: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+`
 const Hero = () => {
   const data = useStaticQuery(graphql`
     query NdaHeroQuery {
@@ -17,6 +72,20 @@ const Hero = () => {
           }
         }
       }
+      whiteBmb: file(relativePath: { eq: "AccredInvtBMBLogo.png" }) {
+        childImageSharp {
+          fixed(width: 230, height: 221) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      whiteMt: file(relativePath: { eq: "AccreditedInvestMTLogo.png" }) {
+        childImageSharp {
+          fixed(width: 220, height: 218) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
   return (
@@ -24,7 +93,9 @@ const Hero = () => {
       <BackgroundImage id="nda-hero" fluid={data.heroBg.childImageSharp.fluid}>
         <Container className="hero-container">
           <div className="hero-content">
-            <div className="mtlogo"></div>
+            <div className="mtlogo">
+              <Img fixed={data.whiteMt.childImageSharp.fixed} />
+            </div>
             <div className="ndainvestcontainer">
               <div className="ndaheroheader">Accredited Investor</div>
               <div className="ndaherounderheader">
@@ -36,7 +107,9 @@ const Hero = () => {
                 <div className="inner-mt">Blue Mountain Best</div>
               </div>
             </div>
-            <div className="bmblogo"></div>
+            <div className="bmblogo">
+              <Img fixed={data.whiteBmb.childImageSharp.fixed} />
+            </div>
           </div>
         </Container>
       </BackgroundImage>
