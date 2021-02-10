@@ -9,7 +9,6 @@ import styled from "styled-components"
 import Hero from "../components/hero"
 import Jamaica from "../components/jamaica"
 import Mt from "../components/mt"
-import Lpfooter from "../components/lpfooter"
 import LpFooter from "../components/lpfooter"
 
 const IndexStyle = styled.div`
@@ -20,10 +19,10 @@ const IndexStyle = styled.div`
     border-style: solid;
     border-radius: 3px;
     border-color: rgba(255, 255, 255, 0);
-    -webkit-transition: border-color 1.2s linear; /* Saf3.2+, Chrome */
-    -moz-transition: border-color 1.2s linear; /* FF3.7+ */
-    -o-transition: border-color 1.2s linear; /* Opera 10.5 */
-    transition: border-color 1.2s linear;
+    -webkit-transition: border-color 3s linear; /* Saf3.2+, Chrome */
+    -moz-transition: border-color 3s linear; /* FF3.7+ */
+    -o-transition: border-color 3s linear; /* Opera 10.5 */
+    transition: border-color 3s linear;
     .focus-border:before,
     .focus-border:after {
       content: "";
@@ -34,6 +33,7 @@ const IndexStyle = styled.div`
       height: 1px;
       background-color: #ffffff;
       transition: 0.6s;
+      transition-delay: 1s;
     }
     .focus-border:after {
       top: auto;
@@ -49,6 +49,7 @@ const IndexStyle = styled.div`
       height: 0;
       background-color: #ffffff;
       transition: 0.8s;
+      transition-delay: 1s;
     }
     .focus-border i:after {
       left: auto;
@@ -61,6 +62,7 @@ const IndexStyle = styled.div`
         left: 0;
         width: 100%;
         transition: 0.6s;
+        transition-delay: 1s;
       }
       .focus-border i:before,
       .focus-border i:after {
@@ -68,6 +70,7 @@ const IndexStyle = styled.div`
         top: 0;
         height: 100%;
         transition: 0.8s;
+        transition-delay: 1s;
       }
     }
   }
@@ -85,6 +88,7 @@ const IndexStyle = styled.div`
   .centergrow {
     &:after {
       transform: scaleX(1);
+      transition-delay: 1s;
     }
   }
 
@@ -96,6 +100,7 @@ const IndexStyle = styled.div`
       border-bottom: solid 3px #ffffff;
       transform: scaleX(0);
       transition: transform 800ms ease-in-out;
+      transition-delay: 1s;
       margin-top: 5px;
       max-width: 85%;
     }
@@ -104,6 +109,7 @@ const IndexStyle = styled.div`
     &:after {
       transform-origin: 0% 50%;
       transform: scaleX(1);
+      transition-delay: 1s;
     }
   }
   .leftcentergrow-initial {
@@ -119,12 +125,14 @@ const IndexStyle = styled.div`
       top: -40px;
       transition: transform 1200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform: scaleY(0);
+      transition-delay: 1s;
     }
   }
   .leftcentergrow {
     &:after {
       transform-origin: 0% 50%;
       transform: scaleY(1);
+      transition-delay: 1s;
     }
   }
   .rightcentergrow-initial {
@@ -141,12 +149,14 @@ const IndexStyle = styled.div`
       right: 0px;
       transition: transform 1200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform: scaleY(0);
+      transition-delay: 1s;
     }
   }
   .rightcentergrow {
     &:after {
       transform-origin: 0% 50%;
       transform: scaleY(1);
+      transition-delay: 1s;
     }
   }
 `

@@ -7,6 +7,8 @@ import Container from "./container"
 import YouTube from "react-youtube"
 import * as variable from "../components/variables"
 import handleViewport from "react-in-viewport"
+import AnchorLink from "react-anchor-link-smooth-scroll"
+
 const MtStyle = styled.div`
   #mt {
     padding: 200px 0px;
@@ -124,7 +126,7 @@ const MtStyle = styled.div`
         max-width: 750px;
         margin: 20px auto;
       }
-      a {
+      .mt-start {
         border: 1px solid #ffffff;
         padding: 10px 25px;
         border-radius: 5px;
@@ -134,6 +136,10 @@ const MtStyle = styled.div`
         font-weight: 500;
         margin: 10px 20px;
         display: inline-block;
+        &:hover {
+          color: black;
+          background-color: white;
+        }
       }
     }
     .bmb-bottom-2 {
@@ -155,7 +161,7 @@ const MtStyle = styled.div`
             margin-bottom: 20px;
           }
           span {
-            color: #164871;
+            color: #8ba4b8;
             font-weight: 900;
           }
         }
@@ -495,7 +501,9 @@ const Mt = () => {
               broker a modern hybrid greenhouse, parcel of coffee acreage, or
               bundle of both in a joint investment.
             </p>
-            <a href="#">Get Started</a>
+            <AnchorLink className="mt-start" href="#lpfooter">
+              Get Started
+            </AnchorLink>
           </div>
           <div className="bmb-bottom-2">
             <BmbLeftBlock />

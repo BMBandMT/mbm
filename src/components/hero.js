@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/container"
 import * as variable from "../components/variables"
-
+import AnchorLink from "react-anchor-link-smooth-scroll"
 const HeroStyle = styled.div`
   #hero {
     min-height: 800px;
@@ -107,7 +107,7 @@ const HeroStyle = styled.div`
     }
     .gatsby-image-wrapper {
       height: 90px !important;
-      width: 30px !important;
+      width: 16px !important;
     }
     img {
       height: 100%;
@@ -117,7 +117,7 @@ const HeroStyle = styled.div`
       transform: rotate(-90deg);
       height: 10px;
       position: relative;
-      left: 15px;
+      left: 10px;
       top: -5px;
       font-weight: 300;
       font-size: 15px;
@@ -156,6 +156,13 @@ const Hero = () => {
           }
         }
       }
+      leftArrow: file(relativePath: { eq: "leftdownarrow.png" }) {
+        childImageSharp {
+          fixed(width: 142, height: 690) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
   return (
@@ -172,9 +179,9 @@ const Hero = () => {
               >
                 Massive Therapeutics
               </a>
-              <a href="#lpfooter" className="hero-start">
+              <AnchorLink className="hero-start" href="#lpfooter">
                 Get Started
-              </a>
+              </AnchorLink>
               <a
                 className="bmb"
                 href="https://bluemountainbest.com"
@@ -193,7 +200,7 @@ const Hero = () => {
         </Container>
         <div className="left-scroll">
           <div className="scroll">Scroll</div>
-          <Img fixed={data.heroArrow.childImageSharp.fixed} />
+          <Img fixed={data.leftArrow.childImageSharp.fixed} />
         </div>
       </BackgroundImage>
     </HeroStyle>

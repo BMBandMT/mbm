@@ -36,8 +36,8 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <footer>
           <Container>
-            &copy; {new Date().getFullYear()} © 2021 Massive Therapeutics, Blue
-            Mountain Best | All Rights Reserved
+            &copy; {new Date().getFullYear()} Massive Therapeutics | &copy;{" "}
+            {new Date().getFullYear()} Blue Mountain Best | All Rights Reserved
           </Container>
         </footer>
       </div>

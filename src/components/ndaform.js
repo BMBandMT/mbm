@@ -3,11 +3,9 @@ import BackgroundImage from "gatsby-background-image"
 import styled from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
-import * as variable from "../components/variables"
+import * as variable from "./variables"
 import down from "../images/downcaret.png"
-import handleViewport from "react-in-viewport"
-
-const LpfooterStyle = styled.div`
+const NdaFormStyle = styled.div`
   #lpfooter {
     padding: 100px 0px 60px 0px;
     h2 {
@@ -16,17 +14,11 @@ const LpfooterStyle = styled.div`
       font-size: 24px;
       line-height: 32px;
       font-weight: 700;
+      border-bottom: 2px solid #000000;
       max-width: 500px;
       margin: 0 auto;
-      padding-bottom: 3px;
-    }
-    .centergrow-initial {
-      margin: 0 auto;
-      max-width: 500px;
-      display: block;
-      &:after {
-        border-bottom: solid 2px #000000;
-      }
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
     p {
       text-align: center;
@@ -34,7 +26,7 @@ const LpfooterStyle = styled.div`
       line-height: 23px;
       font-weight: 400;
       max-width: 815px;
-      margin: 20px auto 0px auto;
+      margin: 0 auto 20px auto;
       span.footer-mt {
         color: #23a455;
       }
@@ -49,23 +41,18 @@ const LpfooterStyle = styled.div`
       flex-direction: column;
       max-width: 730px;
       margin: 40px auto;
-      position: relative;
-      left: -80px;
-      @media (max-width: ${variable.tabletWidth}) {
-        left: auto;
-      }
       .form-row {
         width: 100%;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 24px;
+        margin-bottom: 40px;
         @media (max-width: ${variable.mobileWidth}) {
           flex-direction: column;
         }
         label {
-          width: 160px;
+          width: 150px;
           font-size: 17px;
           line-height: 23px;
           font-weight: bold;
@@ -75,7 +62,7 @@ const LpfooterStyle = styled.div`
           }
         }
         .form-row-inputs {
-          width: calc(100% - 160px);
+          width: calc(100% - 150px);
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
@@ -162,7 +149,7 @@ const LpfooterStyle = styled.div`
                 margin: 10px 0px;
               }
               input {
-                height: 41px;
+                height: 50px;
                 margin: 0px;
                 cursor: pointer;
                 &:checked {
@@ -189,7 +176,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 9px 20px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -207,7 +194,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 9px 20px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -225,7 +212,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 9px 20px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -243,7 +230,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 9px 20px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           &:focus {
@@ -281,7 +268,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 40px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           display: inline-block;
@@ -305,7 +292,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 9px 20px;
+          padding: 15px 20px;
           font-size: 17px;
           font-weight: 400;
           background-image: url(${down});
@@ -330,6 +317,7 @@ const LpfooterStyle = styled.div`
           background-color: #1e5b8d;
           padding: 12px 70px;
           font-size: 21px;
+          margin-top: 25px;
           font-weight: bold;
           &:focus {
             outline: none;
@@ -339,24 +327,13 @@ const LpfooterStyle = styled.div`
     }
   }
 `
-const formTitle = props => {
-  const { inViewport, forwardedRef } = props
-  const htmlClass = inViewport ? "centergrow" : ""
-  return (
-    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
-      <h2>A unique opportunity for accredited investors.</h2>
-    </div>
-  )
-}
-const TitleBlock = handleViewport(formTitle)
-
 const opts = {
   width: "500",
   height: "285",
 }
-const LpFooter = () => {
+const NdaForm = () => {
   const data = useStaticQuery(graphql`
-    query LpQuery {
+    query NdaFormQuery {
       footerBg: file(relativePath: { eq: "LPFooterTrans.png" }) {
         childImageSharp {
           fluid(maxWidth: 3840) {
@@ -367,13 +344,13 @@ const LpFooter = () => {
     }
   `)
   return (
-    <LpfooterStyle>
+    <NdaFormStyle>
       <BackgroundImage
         id="lpfooter"
         fluid={data.footerBg.childImageSharp.fluid}
       >
         <Container>
-          <TitleBlock />
+          <h2>A unique opportunity for accredited investors.</h2>
           <div className="form-copy">
             <p>
               Investing in{" "}
@@ -408,14 +385,12 @@ const LpFooter = () => {
                   id="firstname"
                   name="firstname"
                   placeholder="First"
-                  required
                 />
                 <input
                   type="text"
                   id="lastname"
                   name="lastname"
                   placeholder="Last"
-                  required
                 />
               </div>
             </div>
@@ -451,7 +426,7 @@ const LpFooter = () => {
               </div>
             </div>
             <div className="form-row">
-              <label>Your Phone*</label>
+              <label>Your Email*</label>
               <div className="form-row-inputs form-row-inputs-phone">
                 <input
                   type="phone"
@@ -467,18 +442,8 @@ const LpFooter = () => {
               <div className="form-row-inputs form-row-inputs-hear">
                 <select name="hear" id="hear" required>
                   <option value="">Select...</option>
-                  <option value="Forbes">Forbes</option>
-                  <option value="Reuters">Reuters</option>
-                  <option value="Entrepreneur">Entrepreneur</option>
-                  <option value="Benzinga">Benzinga</option>
-                  <option value="CEO Magazine">CEO Magazine</option>
-                  <option value="Google">Google</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="YouTube">YouTube</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Email">Email</option>
-                  <option value="Referral">Referral</option>
+                  <option value="friend">Friend</option>
+                  <option value="google">Google</option>
                 </select>
               </div>
             </div>
@@ -506,8 +471,8 @@ const LpFooter = () => {
             <div className="form-row">
               <label></label>
               <div className="form-row-inputs form-row-inputs-certify">
-                <input type="checkbox" id="certify" name="certify" required />{" "}
-                *I certify that I am an accredited investor.
+                <input type="checkbox" id="certify" name="certify" /> *I certify
+                that I am an accredited investor.
               </div>
             </div>
             <div className="form-row">
@@ -523,8 +488,8 @@ const LpFooter = () => {
           </form>
         </Container>
       </BackgroundImage>
-    </LpfooterStyle>
+    </NdaFormStyle>
   )
 }
 
-export default LpFooter
+export default NdaForm
