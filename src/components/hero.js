@@ -8,7 +8,8 @@ import * as variable from "../components/variables"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import { DefaultPlayer as Video } from "react-html5video"
 import "react-html5video/dist/styles.css"
-import HeroVideo from "../images/thehero.webm"
+import GrowVideo from "../images/hero.webm"
+
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -42,12 +43,27 @@ const HeroStyle = styled.div`
   #hero {
     min-height: 800px;
     color: white;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    // display: flex;
+    // align-items: flex-end;
+    // justify-content: center;
     padding-bottom: 40px;
     @media (max-width: ${variable.mobileWidth}) {
       min-height: 650px;
+    }
+    .video-container {
+      max-height: 500px;
+      overflow: visible;
+      width: 100%;
+      text-align: center;
+    }
+    .hero-video {
+      background-color: transparent;
+      max-width: 85%;
+      margin: 0 auto;
+      pointer-events: none;
+      .rh5v-Overlay_inner {
+        display: none;
+      }
     }
     .hero-content {
       max-width: 550px;
@@ -117,7 +133,6 @@ const HeroStyle = styled.div`
         flex-direction: column;
         .down-arrow {
           margin-top: 25px;
-          animation: bounce 2s infinite;
           .gatsby-image-wrapper {
             height: 50px !important;
             width: 16px !important;
@@ -165,21 +180,6 @@ const HeroStyle = styled.div`
       transition-duration: 1s !important;
     }
   }
-  @keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-20px);
-    }
-    60% {
-      transform: translateY(-15px);
-    }
-  }
 `
 
 const Hero = () => {
@@ -214,17 +214,12 @@ const Hero = () => {
   return (
     <HeroStyle>
       <BackgroundImage id="hero" fluid={data.heroBg.childImageSharp.fluid}>
+        <div className="video-container">
+          <video className="hero-video" autoPlay muted>
+            <source src={GrowVideo} type="video/webm" />
+          </video>
+        </div>
         <Container className="hero-container">
-          <Video
-            autoPlay
-            loop
-            muted
-            onCanPlayThrough={() => {
-              // Do stuff
-            }}
-          >
-            <source src={HeroVideo} type="video/webm" />
-          </Video>
           <div className="hero-content">
             <FadeIn delay={2000}>
               <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
