@@ -1,8 +1,8 @@
-import React from "react"
+import React, { Component } from "react"
 import BackgroundImage from "gatsby-background-image"
 import styled, { keyframes } from "styled-components"
 import Img from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import Container from "../components/container"
 import * as variable from "../components/variables"
 import AnchorLink from "react-anchor-link-smooth-scroll"
@@ -41,6 +41,7 @@ const Wrapper = styled.div`
 
 const HeroStyle = styled.div`
   #hero {
+    transition: 0.5s;
     min-height: 800px;
     color: white;
     // display: flex;
@@ -51,24 +52,35 @@ const HeroStyle = styled.div`
       min-height: 650px;
     }
     .video-container {
-      max-height: 500px;
+      max-height: 460px;
       overflow: visible;
       width: 100%;
       text-align: center;
     }
     .hero-video {
       background-color: transparent;
-      max-width: 85%;
+      max-width: 78%;
       margin: 0 auto;
       pointer-events: none;
-      .rh5v-Overlay_inner {
-        display: none;
+      @media (max-width: ${variable.mobileWidth}) {
+        max-width: 100%;
       }
     }
     .hero-content {
       max-width: 550px;
       text-align: center;
       margin: 0 auto;
+      .video-play-container {
+        font-size: 15px;
+        height: 20px;
+        .video-play {
+          display: none;
+        }
+        .video-ended {
+          display: block;
+          cursor: pointer;
+        }
+      }
       h2 {
         font-size: 35px;
         font-weight: 500;
@@ -182,92 +194,131 @@ const HeroStyle = styled.div`
   }
 `
 
-const Hero = () => {
-  const data = useStaticQuery(graphql`
-    query HerosQuery {
-      heroBg: file(relativePath: { eq: "herobg.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 3840) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      heroArrow: file(relativePath: { eq: "arrow-down-center.png" }) {
-        childImageSharp {
-          fixed(width: 142, height: 396) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      leftArrow: file(relativePath: { eq: "leftdownarrow.png" }) {
-        childImageSharp {
-          fixed(width: 142, height: 690) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      heroVideo: file(relativePath: { eq: "hero.mov" }) {
-        absolutePath
-      }
+class Hero extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      videoPlay: "video-play",
     }
-  `)
-  return (
-    <HeroStyle>
-      <BackgroundImage id="hero" fluid={data.heroBg.childImageSharp.fluid}>
-        <div className="video-container">
-          <video className="hero-video" autoPlay muted>
-            <source src={GrowVideo} type="video/webm" />
-          </video>
-        </div>
-        <Container className="hero-container">
-          <div className="hero-content">
-            <FadeIn delay={2000}>
-              <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
-            </FadeIn>
-            <div className="hero-link-container">
-              <FadeIn delay={3000} className="herolink heromt">
-                <a
-                  className="mt"
-                  href="https://massivetherapeutics.com"
-                  target="_blank"
+  }
+  changeThis() {
+    this.setState({ videoPlay: "video-ended" })
+  }
+  playThis() {
+    this.setState({ videoPlay: "video-play" })
+    var vid = document.getElementById("myVideo")
+    vid.play()
+  }
+  render() {
+    return (
+      <HeroStyle>
+        <BackgroundImage
+          id="hero"
+          fluid={this.props.data.heroBg.childImageSharp.fluid}
+        >
+          <div className="video-container">
+            <video
+              id="myVideo"
+              className="hero-video"
+              autoPlay
+              muted
+              onEnded={this.changeThis.bind(this)}
+            >
+              <source src={GrowVideo} type="video/webm" />
+            </video>
+          </div>
+          <Container className="hero-container">
+            <div className="hero-content">
+              <div class="video-play-container">
+                <div
+                  className={this.state.videoPlay}
+                  onClick={this.playThis.bind(this)}
                 >
-                  Massive Therapeutics
-                </a>
-              </FadeIn>
-              <FadeIn delay={4000}>
-                <AnchorLink className="hero-start" href="#lpfooter">
-                  Get Started
-                </AnchorLink>
-              </FadeIn>
-              <FadeIn delay={3000} className="herolink herobmb">
-                <a
-                  className="bmb"
-                  href="https://bluemountainbest.com"
-                  target="_blank"
-                >
-                  Blue Mountain Best
-                </a>
-              </FadeIn>
-            </div>
-            <FadeIn delay={5000}>
-              <div className="hero-scroll">
-                <div>Scroll to Learn More</div>
-                <div className="down-arrow">
-                  <Img fixed={data.heroArrow.childImageSharp.fixed} />
+                  Play Again
                 </div>
               </div>
-            </FadeIn>
-          </div>
-        </Container>
-        <FadeIn>
-          <div className="left-scroll">
-            <div className="scroll">Scroll</div>
-            <Img fixed={data.leftArrow.childImageSharp.fixed} />
-          </div>
-        </FadeIn>
-      </BackgroundImage>
-    </HeroStyle>
-  )
+              <FadeIn delay={2000}>
+                <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
+              </FadeIn>
+              <div className="hero-link-container">
+                <FadeIn delay={3000} className="herolink heromt">
+                  <a
+                    className="mt"
+                    href="https://massivetherapeutics.com"
+                    target="_blank"
+                  >
+                    Massive Therapeutics
+                  </a>
+                </FadeIn>
+                <FadeIn delay={4000}>
+                  <AnchorLink className="hero-start" href="#lpfooter">
+                    Get Started
+                  </AnchorLink>
+                </FadeIn>
+                <FadeIn delay={3000} className="herolink herobmb">
+                  <a
+                    className="bmb"
+                    href="https://bluemountainbest.com"
+                    target="_blank"
+                  >
+                    Blue Mountain Best
+                  </a>
+                </FadeIn>
+              </div>
+              <FadeIn delay={5000}>
+                <div className="hero-scroll">
+                  <div>Scroll to Learn More</div>
+                  <div className="down-arrow">
+                    <Img
+                      fixed={this.props.data.heroArrow.childImageSharp.fixed}
+                    />
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </Container>
+          <FadeIn>
+            <div className="left-scroll">
+              <div className="scroll">Scroll</div>
+              <Img fixed={this.props.data.leftArrow.childImageSharp.fixed} />
+            </div>
+          </FadeIn>
+        </BackgroundImage>
+      </HeroStyle>
+    )
+  }
 }
 
-export default Hero
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query HerosQuery {
+        heroBg: file(relativePath: { eq: "herobg.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 3840) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        heroArrow: file(relativePath: { eq: "arrow-down-center.png" }) {
+          childImageSharp {
+            fixed(width: 142, height: 396) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+        leftArrow: file(relativePath: { eq: "leftdownarrow.png" }) {
+          childImageSharp {
+            fixed(width: 142, height: 690) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
+        heroVideo: file(relativePath: { eq: "hero.mov" }) {
+          absolutePath
+        }
+      }
+    `}
+    render={data => <Hero data={data} {...props} />}
+  />
+)
