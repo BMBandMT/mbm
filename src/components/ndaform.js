@@ -5,6 +5,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Container from "./container"
 import * as variable from "./variables"
 import down from "../images/downcaret.png"
+import handleViewport from "react-in-viewport"
+
 const NdaFormStyle = styled.div`
   #lpfooter {
     padding: 100px 0px 60px 0px;
@@ -15,16 +17,8 @@ const NdaFormStyle = styled.div`
       line-height: 32px;
       font-weight: 700;
       max-width: 500px;
-      margin: 0 auto;
+      margin: 40px auto 0px auto;
       padding-bottom: 3px;
-    }
-    .centergrow-initial {
-      margin: 0 auto;
-      max-width: 500px;
-      display: block;
-      &:after {
-        border-bottom: solid 2px #000000;
-      }
     }
     p {
       text-align: center;
@@ -336,7 +330,53 @@ const NdaFormStyle = styled.div`
       }
     }
   }
+  .centergrow-initial {
+    display: inline-block;
+    max-width: 750px;
+    display: block;
+    text-align: center;
+    margin: 0px auto;
+    &:after {
+      border-bottom: solid 2px #000000;
+      display: block;
+      content: "";
+      transform: scaleX(0);
+      transition: transform 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-top: 15px;
+    }
+    &:before {
+      border-bottom: solid 2px #000000;
+      display: block;
+      content: "";
+      transform: scaleX(0);
+      transition: transform 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin-bottom: 15px;
+    }
+  }
+  .centergrow {
+    &:after {
+      transform: scaleX(1);
+      transition-delay: 1s;
+    }
+    &:before {
+      transform: scaleX(1);
+      transition-delay: 1s;
+    }
+  }
 `
+const formTitle = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "centergrow" : ""
+  return (
+    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
+      If you are an accredited investor interested in pursuing an investment
+      opportunity with Massive Therapeutics or Blue Mountain Best, please fill
+      out the form below to certify your qualifications.
+    </div>
+  )
+}
+const FormTitleBlock = handleViewport(formTitle)
+
 const opts = {
   width: "500",
   height: "285",
@@ -360,21 +400,8 @@ const NdaForm = () => {
         fluid={data.footerBg.childImageSharp.fluid}
       >
         <Container>
-          <h2>A unique opportunity for accredited investors.</h2>
-          <div className="form-copy">
-            <p>
-              Investing in{" "}
-              <span className="footer-mt">Massive Therapeutics</span> guarantees
-              a stake in cannabis production as the global industry looks to
-              Jamaica, while investment in{" "}
-              <span className="footer-bmb">Blue Mountain Best</span> secures
-              profits from a luxury estate primed for worldwide retail growth.
-            </p>
-            <p>
-              If you’re an accredited investor, fill out the form below and our
-              team will reach out to you.
-            </p>
-          </div>
+          <FormTitleBlock />
+          <h2>Request for Information and Non-Disclosure</h2>
           <form
             name="contact"
             method="POST"
@@ -450,51 +477,17 @@ const NdaForm = () => {
               </div>
             </div>
             <div className="form-row">
-              <label>How did you hear about us?*</label>
-              <div className="form-row-inputs form-row-inputs-hear">
-                <select name="hear" id="hear" required>
-                  <option value="">Select...</option>
-                  <option value="Forbes">Forbes</option>
-                  <option value="Reuters">Reuters</option>
-                  <option value="Entrepreneur">Entrepreneur</option>
-                  <option value="Benzinga">Benzinga</option>
-                  <option value="CEO Magazine">CEO Magazine</option>
-                  <option value="Google">Google</option>
-                  <option value="LinkedIn">LinkedIn</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="YouTube">YouTube</option>
-                  <option value="Instagram">Instagram</option>
-                  <option value="Email">Email</option>
-                  <option value="Referral">Referral</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-row">
-              <label>Best Time to Call</label>
-              <div className="form-row-inputs form-row-inputs-time">
-                <div className="radio-container">
-                  <input type="radio" value="morning" name="times" />
-                  <div>Morning</div>
-                </div>
-                <div className="radio-container">
-                  <input type="radio" value="noon" name="times" />
-                  <div>Noon</div>
-                </div>
-                <div className="radio-container">
-                  <input type="radio" value="afternoon" name="times" />
-                  <div>Afternoon</div>
-                </div>
-                <div className="radio-container">
-                  <input type="radio" value="evening" name="times" />
-                  <div>Evening</div>
-                </div>
+              <label></label>
+              <div className="form-row-inputs form-row-inputs-accept">
+                By checking this box you confirm reciept and acceptance of our
+                NDA
               </div>
             </div>
             <div className="form-row">
               <label></label>
-              <div className="form-row-inputs form-row-inputs-certify">
-                <input type="checkbox" id="certify" name="certify" required />{" "}
-                *I certify that I am an accredited investor.
+              <div className="form-row-inputs form-row-inputs-nda-agree">
+                <input type="checkbox" id="certify" name="nda-agree" required />{" "}
+                NDA Acknowledgement and Acceptance*
               </div>
             </div>
             <div className="form-row">

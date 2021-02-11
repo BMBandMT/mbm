@@ -1,11 +1,43 @@
 import React from "react"
 import BackgroundImage from "gatsby-background-image"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import Img from "gatsby-image"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/container"
 import * as variable from "../components/variables"
 import AnchorLink from "react-anchor-link-smooth-scroll"
+import { DefaultPlayer as Video } from "react-html5video"
+import "react-html5video/dist/styles.css"
+import HeroVideo from "../images/thehero.webm"
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+const FadeIn = ({ duration = 800, delay = 1000, children, ...delegated }) => {
+  return (
+    <Wrapper
+      {...delegated}
+      style={{
+        ...(delegated.style || {}),
+        animationDuration: duration + "ms",
+        animationDelay: delay + "ms",
+      }}
+    >
+      {children}
+    </Wrapper>
+  )
+}
+const Wrapper = styled.div`
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: ${fadeIn};
+    animation-fill-mode: backwards;
+  }
+`
+
 const HeroStyle = styled.div`
   #hero {
     min-height: 800px;
@@ -20,6 +52,7 @@ const HeroStyle = styled.div`
     .hero-content {
       max-width: 550px;
       text-align: center;
+      margin: 0 auto;
       h2 {
         font-size: 35px;
         font-weight: 500;
@@ -34,20 +67,22 @@ const HeroStyle = styled.div`
         @media (max-width: ${variable.mobileWidth}) {
           flex-direction: column;
         }
-        a {
-          color: white;
-          font-size: 15px;
-          line-height: 20px;
-          font-weight: 400;
+        .herolink {
           width: 150px;
-          &.mt {
+          a {
+            color: white;
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 400;
+          }
+          &.heromt {
             text-align: right;
             @media (max-width: ${variable.mobileWidth}) {
               text-align: center;
               margin-bottom: 20px;
             }
           }
-          &.bmb {
+          &.herobmb {
             text-align: left;
             @media (max-width: ${variable.mobileWidth}) {
               text-align: center;
@@ -102,6 +137,8 @@ const HeroStyle = styled.div`
     display: flex;
     width: 75px;
     align-items: center;
+    animation-name: ${fadeIn};
+    animation-fill-mode: backwards;
     @media (max-width: ${variable.mobileWidth}) {
       left: 40px;
     }
@@ -123,6 +160,11 @@ const HeroStyle = styled.div`
       font-size: 15px;
     }
   }
+  .fadein {
+    > div {
+      transition-duration: 1s !important;
+    }
+  }
   @keyframes bounce {
     0%,
     20%,
@@ -139,6 +181,7 @@ const HeroStyle = styled.div`
     }
   }
 `
+
 const Hero = () => {
   const data = useStaticQuery(graphql`
     query HerosQuery {
@@ -163,45 +206,70 @@ const Hero = () => {
           }
         }
       }
+      heroVideo: file(relativePath: { eq: "hero.mov" }) {
+        absolutePath
+      }
     }
   `)
   return (
     <HeroStyle>
       <BackgroundImage id="hero" fluid={data.heroBg.childImageSharp.fluid}>
         <Container className="hero-container">
+          <Video
+            autoPlay
+            loop
+            muted
+            onCanPlayThrough={() => {
+              // Do stuff
+            }}
+          >
+            <source src={HeroVideo} type="video/webm" />
+          </Video>
           <div className="hero-content">
-            <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
+            <FadeIn delay={2000}>
+              <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
+            </FadeIn>
             <div className="hero-link-container">
-              <a
-                className="mt"
-                href="https://massivetherapeutics.com"
-                target="_blank"
-              >
-                Massive Therapeutics
-              </a>
-              <AnchorLink className="hero-start" href="#lpfooter">
-                Get Started
-              </AnchorLink>
-              <a
-                className="bmb"
-                href="https://bluemountainbest.com"
-                target="_blank"
-              >
-                Blue Mountain Best
-              </a>
+              <FadeIn delay={3000} className="herolink heromt">
+                <a
+                  className="mt"
+                  href="https://massivetherapeutics.com"
+                  target="_blank"
+                >
+                  Massive Therapeutics
+                </a>
+              </FadeIn>
+              <FadeIn delay={4000}>
+                <AnchorLink className="hero-start" href="#lpfooter">
+                  Get Started
+                </AnchorLink>
+              </FadeIn>
+              <FadeIn delay={3000} className="herolink herobmb">
+                <a
+                  className="bmb"
+                  href="https://bluemountainbest.com"
+                  target="_blank"
+                >
+                  Blue Mountain Best
+                </a>
+              </FadeIn>
             </div>
-            <div className="hero-scroll">
-              <div>Scroll to Learn More</div>
-              <div className="down-arrow">
-                <Img fixed={data.heroArrow.childImageSharp.fixed} />
+            <FadeIn delay={5000}>
+              <div className="hero-scroll">
+                <div>Scroll to Learn More</div>
+                <div className="down-arrow">
+                  <Img fixed={data.heroArrow.childImageSharp.fixed} />
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </Container>
-        <div className="left-scroll">
-          <div className="scroll">Scroll</div>
-          <Img fixed={data.leftArrow.childImageSharp.fixed} />
-        </div>
+        <FadeIn>
+          <div className="left-scroll">
+            <div className="scroll">Scroll</div>
+            <Img fixed={data.leftArrow.childImageSharp.fixed} />
+          </div>
+        </FadeIn>
       </BackgroundImage>
     </HeroStyle>
   )
