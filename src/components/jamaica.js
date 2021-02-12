@@ -137,7 +137,7 @@ const jamaicaInvest = props => {
           investment in Jamaic's Blue Mountains.
         </div>
         <div>
-          investment in Massive Therapeutics and Blue Mountain Best ties the
+          Investment in Massive Therapeutics and Blue Mountain Best ties the
           market potentials of legal cannabis to the global revenues of
           exclusive luxory coffee. Together, we accelerate Jamaica's potential
           to lead the cannabis industry and advance global retail growth for the

@@ -48,11 +48,12 @@ const HeroStyle = styled.div`
     // align-items: flex-end;
     // justify-content: center;
     padding-bottom: 40px;
+    padding-top: 50px;
     @media (max-width: ${variable.mobileWidth}) {
       min-height: 650px;
     }
     .video-container {
-      max-height: 460px;
+      max-height: 435px;
       overflow: visible;
       width: 100%;
       text-align: center;
@@ -143,6 +144,7 @@ const HeroStyle = styled.div`
         display: flex;
         justify-content: center;
         flex-direction: column;
+        display: none;
         .down-arrow {
           margin-top: 25px;
           .gatsby-image-wrapper {
@@ -201,6 +203,10 @@ class Hero extends Component {
       videoPlay: "video-play",
     }
   }
+  componentDidMount() {
+    var vid = document.getElementById("myVideo")
+    setTimeout(() => vid.play(), 4000)
+  }
   changeThis() {
     this.setState({ videoPlay: "video-ended" })
   }
@@ -209,6 +215,7 @@ class Hero extends Component {
     var vid = document.getElementById("myVideo")
     vid.play()
   }
+
   render() {
     return (
       <HeroStyle>
@@ -220,7 +227,6 @@ class Hero extends Component {
             <video
               id="myVideo"
               className="hero-video"
-              autoPlay
               muted
               onEnded={this.changeThis.bind(this)}
             >

@@ -38,11 +38,11 @@ const HeroStyle = styled.div`
           align-items: center;
           text-align: center;
           .ndaheroheader {
-            font-size: 42px;
+            font-size: 40px;
             font-weight: bold;
           }
           .ndaherounderheader {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 500;
           }
           .ndahero-container-inner {
@@ -51,6 +51,7 @@ const HeroStyle = styled.div`
             align-items: center;
             .inner-mt {
               font-weight: 300;
+              font-size: 20px;
             }
             .circle {
               margin: 0px 40px;

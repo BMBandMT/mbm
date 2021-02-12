@@ -281,7 +281,7 @@ const LpfooterStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 40px;
+          padding: 9px 30px;
           font-size: 17px;
           font-weight: 400;
           display: inline-block;

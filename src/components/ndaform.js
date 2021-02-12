@@ -8,6 +8,9 @@ import down from "../images/downcaret.png"
 import handleViewport from "react-in-viewport"
 
 const NdaFormStyle = styled.div`
+  a {
+    color: #164871;
+  }
   #lpfooter {
     padding: 100px 0px 60px 0px;
     h2 {
@@ -35,14 +38,16 @@ const NdaFormStyle = styled.div`
       }
     }
     form {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      flex-direction: column;
-      max-width: 730px;
-      margin: 40px auto;
-      position: relative;
-      left: -80px;
+      .form-thin-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: column;
+        max-width: 730px;
+        margin: 40px auto;
+        position: relative;
+        left: -80px;
+      }
       @media (max-width: ${variable.tabletWidth}) {
         left: auto;
       }
@@ -55,6 +60,12 @@ const NdaFormStyle = styled.div`
         margin-bottom: 24px;
         @media (max-width: ${variable.mobileWidth}) {
           flex-direction: column;
+        }
+        .form-row-checkbox {
+          display: flex;
+          align-items: flex-start !important;
+          justify-content: flex-start;
+          flex-wrap: nowrap !important;
         }
         label {
           width: 160px;
@@ -142,6 +153,18 @@ const NdaFormStyle = styled.div`
           }
           &.form-row-inputs-certify {
             justify-content: center;
+          }
+          &.form-row-inputs-accept {
+            display: block;
+            a {
+              margin-left: 5px;
+            }
+          }
+          &.form-row-inputs-nda-agree {
+            justify-content: flex-start;
+            a {
+              margin-right: 7px;
+            }
           }
           &.form-row-inputs-time {
             .radio-container {
@@ -273,7 +296,7 @@ const NdaFormStyle = styled.div`
           -webkit-appearance: none;
           border: 2px solid #000000;
           border-radius: 5px;
-          padding: 15px 40px;
+          padding: 9px 30px;
           font-size: 17px;
           font-weight: 400;
           display: inline-block;
@@ -363,6 +386,24 @@ const NdaFormStyle = styled.div`
       transition-delay: 1s;
     }
   }
+  .agree-header {
+    padding-left: 160px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 50px;
+  }
+  .agree-desc {
+    text-align: center;
+    width: 950px;
+  }
+  .please-check {
+    padding-left: 160px;
+    margin: 0 auto;
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
 `
 const formTitle = props => {
   const { inViewport, forwardedRef } = props
@@ -408,96 +449,189 @@ const NdaForm = () => {
             netlify-honeypot="bot-field"
             data-netlify="true"
           >
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don’t fill this out if you’re human: <input name="bot-field" />
-              </label>
-            </p>
-            <div className="form-row">
-              <label>Your Name*</label>
-              <div className="form-row-inputs form-row-inputs-name">
-                <input
-                  type="text"
-                  id="firstname"
-                  name="firstname"
-                  placeholder="First"
-                  required
-                />
-                <input
-                  type="text"
-                  id="lastname"
-                  name="lastname"
-                  placeholder="Last"
-                  required
-                />
+            <div className="form-thin-container">
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don’t fill this out if you’re human:{" "}
+                  <input name="bot-field" />
+                </label>
+              </p>
+              <div className="form-row">
+                <label>Your Name*</label>
+                <div className="form-row-inputs form-row-inputs-name">
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    placeholder="First"
+                    required
+                  />
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    placeholder="Last"
+                    required
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="form-row">
-              <label>Your City</label>
-              <div className="form-row-inputs form-row-inputs-city">
-                <input type="text" id="city" name="city" placeholder="City" />
-                <input
-                  type="text"
-                  id="state"
-                  name="state"
-                  placeholder="State"
-                />
-                <input
-                  type="text"
-                  id="country"
-                  name="country"
-                  placeholder="Country"
-                />
+              <div className="form-row">
+                <label>Your City</label>
+                <div className="form-row-inputs form-row-inputs-city">
+                  <input type="text" id="city" name="city" placeholder="City" />
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    placeholder="State"
+                  />
+                  <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    placeholder="Country"
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <label>Your Email*</label>
+                <div className="form-row-inputs form-row-inputs-email">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="e.g. hello@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <label>Your Phone*</label>
+                <div className="form-row-inputs form-row-inputs-phone">
+                  <input
+                    type="phone"
+                    id="phone"
+                    name="phone"
+                    placeholder="####"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-inputs-accept">
+                  By checking this box you confirm reciept and acceptance of our
+                  <a target="_blank" href="/NDA.docx">
+                    NDA
+                  </a>
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-inputs-nda-agree">
+                  <input
+                    type="checkbox"
+                    id="certify"
+                    name="nda-agree"
+                    required
+                  />{" "}
+                  <a target="_blank" href="/NDA.docx">
+                    NDA
+                  </a>{" "}
+                  Acknowledgement and Acceptance*
+                </div>
               </div>
             </div>
-            <div className="form-row">
-              <label>Your Email*</label>
-              <div className="form-row-inputs form-row-inputs-email">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="e.g. hello@email.com"
-                  required
-                />
+            <div className="form-thin-container">
+              <div className="agree-header">
+                Investor Accreditation Certification
               </div>
             </div>
-            <div className="form-row">
-              <label>Your Phone*</label>
-              <div className="form-row-inputs form-row-inputs-phone">
-                <input
-                  type="phone"
-                  id="phone"
-                  name="phone"
-                  placeholder="####"
-                  required
-                />
-              </div>
+            <div className="agree-desc">
+              By completing the following you certify that you are familiar with
+              the definition of “accreddited investor” as defined in Rule 501 of
+              Regulation D issued pursuant to the United States Securities Act
+              of 1933 and that you meet the critera to qualify as an accredicted
+              investor in the categories indicated below.
             </div>
-            <div className="form-row">
-              <label></label>
-              <div className="form-row-inputs form-row-inputs-accept">
-                By checking this box you confirm reciept and acceptance of our
-                NDA
+            <div className="form-thin-container">
+              <div className="please-check">
+                Please check one or all that apply.*
               </div>
-            </div>
-            <div className="form-row">
-              <label></label>
-              <div className="form-row-inputs form-row-inputs-nda-agree">
-                <input type="checkbox" id="certify" name="nda-agree" required />{" "}
-                NDA Acknowledgement and Acceptance*
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-director">
+                  <input
+                    type="checkbox"
+                    id="director"
+                    name="director"
+                    required
+                  />{" "}
+                  I am a director, executive officer, or general partner of the
+                  issuer of the securities being offered or sold, or a director,
+                  executive officer, or general partner of a general partner of
+                  that issuer.
+                </div>
               </div>
-            </div>
-            <div className="form-row">
-              <label></label>
-              <div className="form-row-inputs form-row-inputs-submit">
-                <input
-                  type="submit"
-                  className="contact-submit"
-                  value="Submit"
-                />
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-net-worth">
+                  <input
+                    type="checkbox"
+                    id="net-worth"
+                    name="Net Worth"
+                    required
+                  />{" "}
+                  I am a natural person whose individual net worth, or joint net
+                  worth with that of my spouse, is at least $1,000,000,
+                  excluding the value of my primary residence, but including
+                  indebtedness secured by such residence in excess of the value
+                  of such residence, and calculated in accordance with the
+                  below-described rules.
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-income">
+                  <input type="checkbox" id="income" name="Income" required /> I
+                  am a natural person who had individual income in excess of
+                  $200,000 in each of the two most recent years or joint income
+                  with my spouse in excess of $300,000 in each of those years
+                  and I have a reasonable expectation of reaching the same
+                  income level in the current year.
+                </div>
+              </div>
+              <div className="please-check">And I certify that:*</div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-calc">
+                  <input
+                    type="checkbox"
+                    id="calculating"
+                    name="Calculating"
+                    required
+                  />
+                  In calculating my net worth, I have (i) excluded my primary
+                  residence as an asset, (ii) excluded debt secured by such
+                  residence, up to the estimated fair market value of the
+                  residence; (iii) included the amount of any increase on the
+                  debt secured by the primary residence incurred within 60 days
+                  prior to the purchase of the securities (unless related to the
+                  acquisition of the primary residence); and (iv) included debt
+                  in excess of the fair market value of the primary residence.
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-inputs-submit">
+                  <input
+                    type="submit"
+                    className="contact-submit"
+                    value="Submit"
+                  />
+                </div>
               </div>
             </div>
           </form>
