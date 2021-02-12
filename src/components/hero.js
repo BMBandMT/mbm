@@ -144,9 +144,10 @@ const HeroStyle = styled.div`
         display: flex;
         justify-content: center;
         flex-direction: column;
-        display: none;
+
         .down-arrow {
-          margin-top: 25px;
+          // margin-top: 25px;
+          display: none;
           .gatsby-image-wrapper {
             height: 50px !important;
             width: 16px !important;
@@ -200,7 +201,7 @@ class Hero extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      videoPlay: "video-play",
+      videoPlay: "video-ended",
     }
   }
   componentDidMount() {
@@ -236,12 +237,14 @@ class Hero extends Component {
           <Container className="hero-container">
             <div className="hero-content">
               <div class="video-play-container">
-                <div
-                  className={this.state.videoPlay}
-                  onClick={this.playThis.bind(this)}
-                >
-                  Play Again
-                </div>
+                <FadeIn delay={26500}>
+                  <div
+                    className={this.state.videoPlay}
+                    onClick={this.playThis.bind(this)}
+                  >
+                    Play Again
+                  </div>
+                </FadeIn>
               </div>
               <FadeIn delay={2000}>
                 <h2>Investing in Commercial Cannabis and Luxury Coffee</h2>
