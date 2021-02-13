@@ -48,7 +48,29 @@ const NdaFormStyle = styled.div`
         position: relative;
         left: -80px;
         @media (max-width: ${variable.tabletWidth}) {
+          max-width: 650px;
+          left: -20px;
+        }
+        @media (max-width: ${variable.mobileWidth}) {
           left: auto;
+        }
+      }
+      .form-thin-no-margin {
+        @media (max-width: ${variable.tabletWidth}) {
+          max-width: 650px;
+          left: auto;
+          .agree-header {
+            padding-left: 0px;
+          }
+          .please-check {
+            padding-left: 0px;
+          }
+          label {
+            width: 0px !important;
+          }
+          .form-row-inputs {
+            width: 100% !important;
+          }
         }
       }
       .form-thin-container-bottom {
@@ -439,8 +461,9 @@ const formTitle = props => {
   const htmlClass = inViewport ? "centergrow" : ""
   return (
     <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
-      If you would like to learn more about investing in Massive Therapeutics or
-      Blue Mountain Best, please fill out the form below.
+      If you are an accredited investor interested in pursuing an investment
+      opportunity with Massive Therapeutics or Blue Mountain Best, please fill
+      out the form below to certify your qualifications.
     </div>
   )
 }
@@ -452,7 +475,7 @@ const opts = {
 }
 const NdaForm = () => {
   const data = useStaticQuery(graphql`
-    query NdaFormQuery {
+    query AccOneFormQuery {
       footerBg: file(relativePath: { eq: "NDAFormBackground.png" }) {
         childImageSharp {
           fluid(maxWidth: 3840) {
@@ -472,13 +495,13 @@ const NdaForm = () => {
           <FormTitleBlock />
           <h2>Request for Information and Non-Disclosure</h2>
           <form
-            name="nda"
+            name="accredited1"
             method="POST"
             netlify-honeypot="bot-field"
             data-netlify="true"
           >
             <div className="form-thin-container">
-              <input type="hidden" name="form-name" value="nda" />
+              <input type="hidden" name="form-name" value="accredited1" />
               <p className="hidden">
                 <label>
                   Don’t fill this out if you’re human:{" "}
@@ -574,7 +597,85 @@ const NdaForm = () => {
                 </div>
               </div>
             </div>
-            <div className="form-thin-container form-thin-container-bottom">
+            <div className="form-thin-container form-thin-no-margin">
+              <div className="agree-header">
+                Investor Accreditation Certification
+              </div>
+            </div>
+            <div className="agree-desc">
+              By completing the following you certify that you are familiar with
+              the definition of “accreddited investor” as defined in Rule 501 of
+              Regulation D issued pursuant to the United States Securities Act
+              of 1933 and that you meet the critera to qualify as an accredicted
+              investor in the categories indicated below.
+            </div>
+            <div className="form-thin-container form-thin-no-margin form-thin-container-bottom">
+              <div className="please-check">
+                Please check one or all that apply.*
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-director">
+                  <input
+                    type="checkbox"
+                    id="director"
+                    name="director"
+                    required
+                  />{" "}
+                  I am a director, executive officer, or general partner of the
+                  issuer of the securities being offered or sold, or a director,
+                  executive officer, or general partner of a general partner of
+                  that issuer.
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-net-worth">
+                  <input
+                    type="checkbox"
+                    id="net-worth"
+                    name="Net Worth"
+                    required
+                  />{" "}
+                  I am a natural person whose individual net worth, or joint net
+                  worth with that of my spouse, is at least $1,000,000,
+                  excluding the value of my primary residence, but including
+                  indebtedness secured by such residence in excess of the value
+                  of such residence, and calculated in accordance with the
+                  below-described rules.
+                </div>
+              </div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-income">
+                  <input type="checkbox" id="income" name="Income" required /> I
+                  am a natural person who had individual income in excess of
+                  $200,000 in each of the two most recent years or joint income
+                  with my spouse in excess of $300,000 in each of those years
+                  and I have a reasonable expectation of reaching the same
+                  income level in the current year.
+                </div>
+              </div>
+              <div className="please-check">And I certify that:*</div>
+              <div className="form-row">
+                <label></label>
+                <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-calc">
+                  <input
+                    type="checkbox"
+                    id="calculating"
+                    name="Calculating"
+                    required
+                  />
+                  In calculating my net worth, I have (i) excluded my primary
+                  residence as an asset, (ii) excluded debt secured by such
+                  residence, up to the estimated fair market value of the
+                  residence; (iii) included the amount of any increase on the
+                  debt secured by the primary residence incurred within 60 days
+                  prior to the purchase of the securities (unless related to the
+                  acquisition of the primary residence); and (iv) included debt
+                  in excess of the fair market value of the primary residence.
+                </div>
+              </div>
               <div className="form-row">
                 <label></label>
                 <div className="form-row-inputs form-row-inputs-submit">

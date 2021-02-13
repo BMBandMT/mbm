@@ -72,7 +72,7 @@ const HeroStyle = styled.div`
 `
 const Hero = () => {
   const data = useStaticQuery(graphql`
-    query NdaHeroQuery {
+    query RealNdaHeroQuery {
       heroBg: file(relativePath: { eq: "AccredInvHeader.png" }) {
         childImageSharp {
           fluid(maxWidth: 3840) {
@@ -105,10 +105,8 @@ const Hero = () => {
               <Img fixed={data.whiteMt.childImageSharp.fixed} />
             </div>
             <div className="ndainvestcontainer">
-              <div className="ndaheroheader">Accredited Investor</div>
-              <div className="ndaherounderheader">
-                Request for Information and Non-Disclosure
-              </div>
+              <div className="ndaheroheader">Request for Information</div>
+              <div className="ndaherounderheader">Non-Disclosure Agreement</div>
               <div className="ndahero-container-inner">
                 <div className="inner-mt">Massive Therapeutics</div>
                 <div className="circle">&#8226;</div>
