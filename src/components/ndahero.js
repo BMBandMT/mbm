@@ -106,7 +106,7 @@ const Hero = () => {
             </div>
             <div className="ndainvestcontainer">
               <div className="ndaheroheader">Request for Information</div>
-              <div className="ndaherounderheader">Non Disclosure Agreement</div>
+              <div className="ndaherounderheader">Non-Disclosure Agreement</div>
               <div className="ndahero-container-inner">
                 <div className="inner-mt">Massive Therapeutics</div>
                 <div className="circle">&#8226;</div>
