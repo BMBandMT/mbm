@@ -9,6 +9,9 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import { DefaultPlayer as Video } from "react-html5video"
 import "react-html5video/dist/styles.css"
 import GrowVideo from "../images/hero.webm"
+import { isSafari } from "react-device-detect"
+import BeanImage from "../images/beanvector.png"
+import CannabisImage from "../images/cannabisvector.png"
 
 const fadeIn = keyframes`
   from {
@@ -65,6 +68,193 @@ const HeroStyle = styled.div`
       pointer-events: none;
       @media (max-width: ${variable.mobileWidth}) {
         max-width: 100%;
+      }
+    }
+    .safari-container {
+      display: none;
+    }
+    &.safari {
+      .video-container {
+        margin-bottom: 60px;
+        max-height: 100%;
+      }
+      .video-play-container {
+        display: none;
+      }
+      .hero-video {
+        display: none;
+      }
+      .safari-container {
+        display: block;
+        max-width: 770px;
+        margin: 0 auto;
+        padding: 0px 20px;
+        .safari-uppeer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: left;
+          @media (max-width: ${variable.mobileWidth}) {
+            flex-direction: column;
+            max-width: 300px;
+            margin: 0 auto;
+          }
+          .cannabis-one {
+            position: relative;
+            top: 40px;
+            width: calc(50% - 110px);
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              top: unset;
+            }
+            .safari-header {
+              &:after {
+                content: "";
+                width: 100%;
+                height: 2px;
+                background-color: white;
+                display: block;
+              }
+              margin-bottom: 5px;
+            }
+            .safari-copy {
+              padding-right: 20px;
+            }
+          }
+          .cannabis-two {
+            width: 220px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              margin: 40px 0px;
+            }
+          }
+          .cannabis-three {
+            position: relative;
+            top: -20px;
+            padding-left: 40px;
+            width: calc(50% - 100px);
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              top: unset;
+              padding: 0px;
+            }
+            .safari-header {
+              margin-bottom: 5px;
+              &:after {
+                content: "";
+                width: 110px;
+                height: 2px;
+                background-color: white;
+                display: block;
+                position: relative;
+                right: 64px;
+                @media (max-width: ${variable.mobileWidth}) {
+                  width: 100%;
+                  right: auto;
+                }
+              }
+            }
+          }
+          .safari-copy {
+            font-size: 15px;
+            font-weight: 300;
+          }
+          .safari-header {
+            font-size: 28px;
+            font-weight: bold;
+          }
+        }
+        .safari-lower {
+          margin-top: 30px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: left;
+          @media (max-width: ${variable.mobileWidth}) {
+            flex-direction: column;
+            max-width: 300px;
+            margin: 30px auto 0px auto;
+          }
+          .cannabis-one {
+            position: relative;
+            top: 40px;
+            width: calc(50% - 110px);
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              top: unset;
+            }
+            .safari-header {
+              &:after {
+                content: "";
+                width: 100%;
+                height: 2px;
+                background-color: white;
+                display: block;
+              }
+              margin-bottom: 5px;
+            }
+            .safari-copy {
+              padding-right: 20px;
+              @media (max-width: ${variable.mobileWidth}) {
+                padding: 0px;
+              }
+            }
+          }
+          .cannabis-two {
+            width: 180px;
+            img {
+              width: 100%;
+              height: auto;
+            }
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              margin: 40px 0px;
+              text-align: center;
+              img {
+                max-width: 250px;
+              }
+            }
+          }
+          .cannabis-three {
+            position: relative;
+            top: -20px;
+            padding-left: 40px;
+            width: calc(50% - 105px);
+            @media (max-width: ${variable.mobileWidth}) {
+              width: 100%;
+              top: unset;
+              padding: 0px;
+            }
+            .safari-header {
+              margin-bottom: 5px;
+              &:after {
+                content: "";
+                width: 120px;
+                height: 2px;
+                background-color: white;
+                display: block;
+                position: relative;
+                right: 53px;
+                @media (max-width: ${variable.mobileWidth}) {
+                  right: auto;
+                  width: 100%;
+                }
+              }
+            }
+          }
+          .safari-copy {
+            font-size: 15px;
+            font-weight: 300;
+          }
+          .safari-header {
+            font-size: 28px;
+            font-weight: bold;
+          }
+        }
       }
     }
     .hero-content {
@@ -218,13 +408,67 @@ class Hero extends Component {
   }
 
   render() {
+    console.log(isSafari)
     return (
       <HeroStyle>
         <BackgroundImage
           id="hero"
+          className={isSafari ? "safari" : "no-safari"}
           fluid={this.props.data.heroBg.childImageSharp.fluid}
         >
           <div className="video-container">
+            <div className="safari-container">
+              <div className="safari-uppeer">
+                <div className="cannabis-one">
+                  <FadeIn delay={4000}>
+                    <div className="safari-header">80%</div>
+                    <div className="safari-copy">
+                      Of supply chain costs can be cut by Jamaican cannabis
+                      producers.
+                    </div>
+                  </FadeIn>
+                </div>
+                <div className="cannabis-two">
+                  <FadeIn delay={2000}>
+                    <img src={CannabisImage} />
+                  </FadeIn>
+                </div>
+                <div className="cannabis-three">
+                  <FadeIn delay={3000}>
+                    <div className="safari-header">1/3</div>
+                    <div className="safari-copy">
+                      Of Canadian cannabis businesses closed because of supply
+                      shortages last year.
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+              <div className="safari-lower">
+                <div className="cannabis-one">
+                  <FadeIn delay={7000}>
+                    <div className="safari-header">2.5x</div>
+                    <div className="safari-copy">
+                      historic coffee yields through commercial investment in
+                      new estates.
+                    </div>
+                  </FadeIn>
+                </div>
+                <div className="cannabis-two">
+                  <FadeIn delay={5000}>
+                    <img src={BeanImage} />
+                  </FadeIn>
+                </div>
+                <div className="cannabis-three">
+                  <FadeIn delay={6000}>
+                    <div className="safari-header">$120</div>
+                    <div className="safari-copy">
+                      per pound at market. Jamaican Blue Mountain coffee is
+                      among the world's most valuable.
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+            </div>
             <video
               id="myVideo"
               className="hero-video"
@@ -236,7 +480,7 @@ class Hero extends Component {
           </div>
           <Container className="hero-container">
             <div className="hero-content">
-              <div class="video-play-container">
+              <div className="video-play-container">
                 <FadeIn delay={26500}>
                   <div
                     className={this.state.videoPlay}

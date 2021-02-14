@@ -6,7 +6,7 @@ import Container from "../components/container"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import NdaForm from "../components/accredited2form"
-import NdaHero from "../components/ndahero"
+import NdaHero from "../components/accreditedhero"
 
 const NdaStyle = styled.div``
 
