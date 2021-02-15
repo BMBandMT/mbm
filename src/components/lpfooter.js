@@ -470,8 +470,10 @@ const LpFooter = () => {
                   <option value="Forbes">Forbes</option>
                   <option value="Reuters">Reuters</option>
                   <option value="Entrepreneur">Entrepreneur</option>
+                  <option value="Investing">Investing.com</option>
                   <option value="Benzinga">Benzinga</option>
                   <option value="CEO Magazine">CEO Magazine</option>
+                  <option value="Equities">Equities.com</option>
                   <option value="Google">Google</option>
                   <option value="LinkedIn">LinkedIn</option>
                   <option value="Facebook">Facebook</option>
