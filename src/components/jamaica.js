@@ -133,13 +133,13 @@ const jamaicaInvest = props => {
     >
       <div className="jamaica-mid-2">
         <div>
-          Massive Therapeutics and Blue Mountain Best are revolutioning
-          investment in Jamaic's Blue Mountains.
+          Massive Therapeutics and Blue Mountain Best are revolutionizing
+          investment in Jamaica's Blue Mountains.
         </div>
         <div>
           Investment in Massive Therapeutics and Blue Mountain Best ties the
           market potentials of legal cannabis to the global revenues of
-          exclusive luxory coffee. Together, we accelerate Jamaica's potential
+          exclusive luxury coffee. Together, we accelerate Jamaica's potential
           to lead the cannabis industry and advance global retail growth for the
           island's historic coffee.
         </div>
