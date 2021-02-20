@@ -589,7 +589,7 @@ const NdaForm = () => {
                     required
                   />{" "}
                   <div>
-                    <a target="_blank" href="/NDA.docx">
+                    <a target="_blank" href="https://massivebluemountain.com/nda.pdf">
                       NDA
                     </a>{" "}
                     Acknowledgement and Acceptance*
