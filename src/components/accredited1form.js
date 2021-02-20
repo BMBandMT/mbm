@@ -574,7 +574,7 @@ const NdaForm = () => {
                 <label></label>
                 <div className="form-row-inputs form-row-inputs-accept">
                   By checking this box you confirm reciept and acceptance of our
-                  <a target="_blank" href="/NDA.docx">
+                  <a target="_blank" href="https://massivebluemountain.com/nda.pdf">
                     NDA
                   </a>
                 </div>
