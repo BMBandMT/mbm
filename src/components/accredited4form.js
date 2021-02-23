@@ -616,14 +616,9 @@ const NdaForm = () => {
               <div className="form-row">
                 <label></label>
                 <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-director">
-                  <input
-                    type="checkbox"
-                    id="director"
-                    name="director"
-                    required
-                  />{" "}
-                  I am a director, executive officer, or general partner of the
-                  issuer of the securities being offered or sold, or a director,
+                  <input type="checkbox" id="director" name="director" /> I am a
+                  director, executive officer, or general partner of the issuer
+                  of the securities being offered or sold, or a director,
                   executive officer, or general partner of a general partner of
                   that issuer.
                 </div>
@@ -631,13 +626,8 @@ const NdaForm = () => {
               <div className="form-row">
                 <label></label>
                 <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-net-worth">
-                  <input
-                    type="checkbox"
-                    id="net-worth"
-                    name="Net Worth"
-                    required
-                  />{" "}
-                  I am a natural person whose individual net worth, or joint net
+                  <input type="checkbox" id="net-worth" name="Net Worth" /> I am
+                  a natural person whose individual net worth, or joint net
                   worth with that of my spouse, is at least $1,000,000,
                   excluding the value of my primary residence, but including
                   indebtedness secured by such residence in excess of the value
@@ -648,12 +638,12 @@ const NdaForm = () => {
               <div className="form-row">
                 <label></label>
                 <div className="form-row-inputs form-row-checkbox form-row-inputs-nda-income">
-                  <input type="checkbox" id="income" name="Income" required /> I
-                  am a natural person who had individual income in excess of
-                  $200,000 in each of the two most recent years or joint income
-                  with my spouse in excess of $300,000 in each of those years
-                  and I have a reasonable expectation of reaching the same
-                  income level in the current year.
+                  <input type="checkbox" id="income" name="Income" /> I am a
+                  natural person who had individual income in excess of $200,000
+                  in each of the two most recent years or joint income with my
+                  spouse in excess of $300,000 in each of those years and I have
+                  a reasonable expectation of reaching the same income level in
+                  the current year.
                 </div>
               </div>
               <div className="please-check">And I certify that:*</div>
