@@ -60,6 +60,7 @@ const HeroStyle = styled.div`
       overflow: visible;
       width: 100%;
       text-align: center;
+      margin-bottom: 20px;
     }
     .hero-video {
       background-color: transparent;
@@ -418,31 +419,6 @@ class Hero extends Component {
         >
           <div className="video-container">
             <div className="safari-container">
-              <div className="safari-uppeer">
-                <div className="cannabis-one">
-                  <FadeIn delay={4000}>
-                    <div className="safari-header">80%</div>
-                    <div className="safari-copy">
-                      Of supply chain costs can be cut by Jamaican cannabis
-                      producers.
-                    </div>
-                  </FadeIn>
-                </div>
-                <div className="cannabis-two">
-                  <FadeIn delay={2000}>
-                    <img src={CannabisImage} />
-                  </FadeIn>
-                </div>
-                <div className="cannabis-three">
-                  <FadeIn delay={3000}>
-                    <div className="safari-header">1/3</div>
-                    <div className="safari-copy">
-                      Of Canadian cannabis businesses closed because of supply
-                      shortages last year.
-                    </div>
-                  </FadeIn>
-                </div>
-              </div>
               <div className="safari-lower">
                 <div className="cannabis-one">
                   <FadeIn delay={7000}>

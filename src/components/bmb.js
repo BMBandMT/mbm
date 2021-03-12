@@ -197,7 +197,7 @@ const MtStyle = styled.div`
         }
         &.rightcentergrow-initial {
           &:after {
-            background-color: #164871;
+            background-color: white;
           }
         }
       }
@@ -207,7 +207,7 @@ const MtStyle = styled.div`
         }
         &.leftcentergrow-initial {
           &:after {
-            background-color: #164871;
+            background-color: white;
           }
         }
       }
@@ -218,7 +218,7 @@ const MtStyle = styled.div`
         font-weight: 400;
         &.leftcentergrow-initial {
           &:after {
-            background-color: #164871;
+            background-color: white;
           }
         }
         @media (max-width: ${variable.mobileWidth}) {
@@ -252,6 +252,12 @@ const MtStyle = styled.div`
   }
   iframe {
     max-width: 100%;
+  }
+  .center-grow-small {
+    &::after {
+      max-width: 400px;
+      margin: 0 auto;
+    }
   }
 `
 const mtLeft = props => {
@@ -324,9 +330,12 @@ const mtSecureHeader = props => {
   const { inViewport, forwardedRef } = props
   const htmlClass = inViewport ? "centergrow" : ""
   return (
-    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
+    <div
+      className={`center-grow-small centergrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
       <div className="mt-secure-header">
-        Secure a stake in a historic luxory product. Invest in worldwide retail
+        Secure a stake in a historic luxury product. Invest in worldwide retail
         growth.
       </div>
     </div>
@@ -469,7 +478,7 @@ const Mt = () => {
             <MtSecureHeaderBlock />
             <p>
               Directly invest in Blue Mountain Best and become a partner with
-              local farms to share in the profits of luxory Blue Mountain
+              local farms to share in the profits of luxury Blue Mountain
               Coffee.
             </p>
             <AnchorLink className="mt-start" href="#lpfooter">

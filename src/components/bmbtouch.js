@@ -130,10 +130,17 @@ const BmbTouchStyle = styled.div`
       }
     }
   }
+  .center-grow-small {
+    &::after {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
   .jamaica-invest {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 50px 0px;
     margin-bottom: 85px;
+
     a {
       border: 1px solid #ffffff;
       padding: 10px 25px;
@@ -209,7 +216,10 @@ const jamaicaTitle2 = props => {
   const { inViewport, forwardedRef } = props
   const htmlClass = inViewport ? "centergrow" : ""
   return (
-    <div className={`centergrow-initial ` + htmlClass} ref={forwardedRef}>
+    <div
+      className={`center-grow-small centergrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
       <h3>
         Become a partner with local farmers to increase production, profits, and
         global fair trade

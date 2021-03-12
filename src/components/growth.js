@@ -118,7 +118,7 @@ const jamaicaTitle = props => {
       className={`jamaica-title centergrow-initial ` + htmlClass}
       ref={forwardedRef}
     >
-      <h2>Worldwide Retail Growth for Luxory Blue Mountain Coffees</h2>
+      <h2>Worldwide Retail Growth for Luxury Blue Mountain Coffee</h2>
     </div>
   )
 }
