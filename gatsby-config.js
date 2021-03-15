@@ -51,7 +51,7 @@ module.exports = {
         // Defaults to false meaning LinkedIn Insight will only be loaded in production.
         includeInDevelopment: false
       }
-    }
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: "@slixites/gatsby-plugin-google-fonts",
