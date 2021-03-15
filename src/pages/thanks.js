@@ -14,6 +14,7 @@ const IndexPage = () => {
   return (
     <div id="oppthanks">
       <Layout>
+      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=2587514&conversionId=3817612&fmt=gif" />
         <IndexStyle>
           <Hero />
         </IndexStyle>

@@ -42,6 +42,16 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-linkedin-insight`,
+      options: {
+        partnerId: `2587514`,
+  
+        // Include LinkedIn Insight in development.
+        // Defaults to false meaning LinkedIn Insight will only be loaded in production.
+        includeInDevelopment: false
+      }
+    }
     `gatsby-plugin-styled-components`,
     {
       resolve: "@slixites/gatsby-plugin-google-fonts",
