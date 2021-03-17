@@ -7,10 +7,38 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Container from "../components/container"
-
+import styled from "styled-components"
 import "./layout.css"
+import * as variable from "../components/variables"
+
+const LayoutStyle = styled.div`
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: ${variable.mobileWidth}) {
+      flex-direction: column;
+    }
+  }
+  .footer-inner div:nth-child(1) {
+    width: calc(100% - 200px);
+    @media (max-width: ${variable.mobileWidth}) {
+      width: 100%;
+    }
+  }
+  .footer-inner div:nth-child(2) {
+    width: 200px;
+    a {
+      color: #707070;
+    }
+    @media (max-width: ${variable.mobileWidth}) {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -32,15 +60,23 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div>
+      <LayoutStyle>
         <main>{children}</main>
         <footer>
           <Container>
-            &copy; {new Date().getFullYear()} Massive Therapeutics | &copy;{" "}
-            {new Date().getFullYear()} Blue Mountain Best | All Rights Reserved
+            <div className="footer-inner">
+              <div>
+                &copy; {new Date().getFullYear()} Massive Therapeutics | &copy;{" "}
+                {new Date().getFullYear()} Blue Mountain Best | All Rights
+                Reserved
+              </div>
+              <div>
+                <Link to="/confidentiality-policy">Confidentiality Policy</Link>
+              </div>
+            </div>
           </Container>
         </footer>
-      </div>
+      </LayoutStyle>
     </>
   )
 }
