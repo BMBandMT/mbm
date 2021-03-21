@@ -177,7 +177,7 @@ const JamaicaBlock2 = handleViewport(jamaicaTitle2)
 const Jamaica = () => {
   const data = useStaticQuery(graphql`
     query MtYahooQuery {
-      jamBg: file(relativePath: { eq: "MiddleBackground.png" }) {
+      jamBg: file(relativePath: { eq: "MiddleBackground.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3840) {
             ...GatsbyImageSharpFluid
