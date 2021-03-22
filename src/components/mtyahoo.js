@@ -6,14 +6,18 @@ import { useStaticQuery, graphql } from "gatsby"
 import Container from "../components/container"
 import handleViewport from "react-in-viewport"
 import * as variable from "../components/variables"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 
 const JamaicaStyle = styled.div`
   #jamaica {
-    padding: 175px 0px 100px 0px;
+    padding: 150px 0px 100px 0px;
     color: white;
     text-align: center;
     @media (max-width: ${variable.mobileWidth}) {
       padding: 50px 0px 50px 0px;
+    }
+    .jamaica-title {
+      max-width: 830px;
     }
     h2 {
       margin: 0px;
@@ -25,24 +29,39 @@ const JamaicaStyle = styled.div`
         color: #23a455;
       }
     }
+    .bmb-title {
+      max-width: 830px;
+      margin-top: 90px;
+      span {
+        color: #77aad5;
+      }
+    }
     .jamaica-top-3 {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
-      margin: 80px 0px;
+      justify-content: center;
+      margin: 60px 0px;
       flex-wrap: wrap;
 
       > div {
-        width: calc(100% / 3 - 25px);
-        font-size: 18px;
-        line-height: 24px;
+        width: calc(100% / 3 - 95px);
+        font-size: 20px;
+        line-height: 26px;
         font-weight: 400;
         @media (max-width: ${variable.mobileWidth}) {
           width: 100%;
           margin-bottom: 40px;
         }
+        &:nth-child(2) {
+          margin: 0px 40px;
+          @media (max-width: ${variable.mobileWidth}) {
+            width: 100%;
+            margin: 0px 0px 40px 0px;
+          }
+        }
         .jamaica-top-large {
-          font-size: 28px;
+          font-size: 40px;
+          line-height: 48px;
           font-weight: 500;
           margin-bottom: 10px;
         }
@@ -52,25 +71,32 @@ const JamaicaStyle = styled.div`
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      flex-direction: column;
+      max-width: 550px;
+      margin: 0 auto;
       div {
         &:first-child {
           font-size: 28px;
-          line-height: 37px;
-          font-weight: 500;
-          text-align: left;
-          width: 50%;
-          @media (max-width: ${variable.mobileWidth}) {
-            width: 100%;
-          }
+          line-height: 30px;
         }
         &:last-child {
-          font-size: 18px;
-          line-height: 24px;
-          font-weight: 400;
-          text-align: left;
-          width: 48%;
-          @media (max-width: ${variable.mobileWidth}) {
-            width: 100%;
+          text-align: center;
+          margin-top: 20px;
+          a {
+            border: 1px solid #ffffff;
+            padding: 10px 25px;
+            border-radius: 5px;
+            color: white;
+            font-size: 20px;
+            line-height: 26px;
+            font-weight: 500;
+            margin: 0px 20px;
+            display: inline-block;
+            width: auto;
+            &:hover {
+              color: black;
+              background-color: white;
+            }
           }
         }
       }
@@ -85,19 +111,26 @@ const JamaicaStyle = styled.div`
     .jamaica-bottom-3 {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 90px;
+      margin-top: 60px;
       > div {
-        width: calc(100% / 3 - 25px);
-        font-size: 18px;
-        line-height: 24px;
+        width: calc(100% / 3 - 95px);
+        font-size: 20px;
+        line-height: 26px;
         font-weight: 400;
-        &:first-child {
-          width: calc(100% / 3 - 30px);
+        @media (max-width: ${variable.mobileWidth}) {
+          margin-bottom: 40px;
+        }
+        :nth-child(2) {
+          margin: 0px 40px;
+          @media (max-width: ${variable.mobileWidth}) {
+            margin: 0px 0px 40px 0px;
+          }
         }
         .jamaica-bottom-large {
-          font-size: 28px;
+          font-size: 40px;
+          line-height: 48px;
           font-weight: 500;
           margin-bottom: 10px;
         }
@@ -109,7 +142,122 @@ const JamaicaStyle = styled.div`
     }
   }
   .jamaica-invest {
-    padding: 50px 20px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+  }
+  .yahoo-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    max-width: 975px;
+    margin: 90px auto 0px auto;
+    height: 150px;
+    @media (max-width: ${variable.mobileWidth}) {
+      flex-direction: column;
+      height: auto;
+      margin-top: 0px;
+    }
+    .yahoo-logo-container {
+      width: 320px;
+      border-right: 3px solid white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      @media (max-width: ${variable.mobileWidth}) {
+        width: 100%;
+        border: 0px;
+      }
+      .yahoo-feat {
+        font-size: 35px;
+        font-weight: bold;
+      }
+      .gatsby-image-wrapper {
+        max-width: 250px;
+        margin-left: 25px;
+        margin-top: 15px;
+      }
+    }
+    .yahoo-right {
+      width: calc(100% - 360px);
+      font-size: 23px;
+      line-height: 30px;
+      @media (max-width: ${variable.mobileWidth}) {
+        width: 100%;
+        margin-top: 40px;
+      }
+    }
+  }
+  .benz-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    max-width: 975px;
+    margin: 90px auto 0px auto;
+    height: 150px;
+    @media (max-width: ${variable.mobileWidth}) {
+      height: auto;
+      flex-direction: column;
+    }
+    .benz-logo-container {
+      width: 320px;
+      border-right: 3px solid white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      @media (max-width: ${variable.mobileWidth}) {
+        width: 100%;
+        border: 0px;
+      }
+      .benz-feat {
+        font-size: 35px;
+        font-weight: bold;
+      }
+      .gatsby-image-wrapper {
+        max-width: 250px;
+        margin-left: 25px;
+        margin-top: 15px;
+      }
+    }
+    .benz-right {
+      width: calc(100% - 360px);
+      font-size: 23px;
+      line-height: 30px;
+      @media (max-width: ${variable.mobileWidth}) {
+        width: 100%;
+        margin-top: 40px;
+      }
+    }
+  }
+  .bmb-opp-link {
+    a {
+      border: 1px solid #ffffff;
+      padding: 10px 25px;
+      border-radius: 5px;
+      color: white;
+      font-size: 20px;
+      line-height: 26px;
+      font-weight: 500;
+      margin: 0px 20px;
+      display: inline-block;
+      width: auto;
+      &:hover {
+        color: black;
+        background-color: white;
+      }
+    }
+  }
+  .centergrow:after {
+    max-width: 275px;
+    margin: 0 auto;
+  }
+
+  .jamaica-invest.centergrow:after {
+    max-width: 100%;
+    margin: 0 auto;
   }
 `
 
@@ -129,31 +277,38 @@ const jamaicaTitle = props => {
     </div>
   )
 }
-
-const jamaicaInvest = props => {
+const BmbTitle = props => {
   const { inViewport, forwardedRef } = props
-  const htmlClass = inViewport ? "squaregrow" : ""
+  const htmlClass = inViewport ? "centergrow" : ""
   return (
     <div
-      className={`jamaica-invest  squaregrow-initial ` + htmlClass}
+      className={`bmb-title centergrow-initial ` + htmlClass}
+      ref={forwardedRef}
+    >
+      <h2>
+        <span>Blue Mountain Best</span> is a producer and processor of Jamaican
+        Blue Mountain coffee, championing worldwide retail growth for a historic
+        luxury product.
+      </h2>
+    </div>
+  )
+}
+const jamaicaInvest = props => {
+  const { inViewport, forwardedRef } = props
+  const htmlClass = inViewport ? "centergrow" : ""
+  return (
+    <div
+      className={`jamaica-invest  centergrow-initial ` + htmlClass}
       ref={forwardedRef}
     >
       <div className="jamaica-mid-2">
         <div>
-          Massive Therapeutics and Blue Mountain Best are revolutionizing
-          investment in Jamaica's Blue Mountains.
+          Directly invest in Massive Therapeutics and Blue Mountain Best
         </div>
-        <div>
-          Investment in Massive Therapeutics and Blue Mountain Best ties the
-          market potentials of legal cannabis to the global revenues of
-          exclusive luxury coffee. Together, we accelerate Jamaica's potential
-          to lead the cannabis industry and advance global retail growth for the
-          island's historic coffee.
-        </div>
+        <span class="focus-border">
+          <i></i>
+        </span>
       </div>
-      <span class="focus-border">
-        <i></i>
-      </span>
     </div>
   )
 }
@@ -172,7 +327,7 @@ const JamaicaBlock = handleViewport(jamaicaTitle)
 
 const JamaicaInvestBlock = handleViewport(jamaicaInvest)
 
-const JamaicaBlock2 = handleViewport(jamaicaTitle2)
+const BmbBlock = handleViewport(BmbTitle)
 
 const Jamaica = () => {
   const data = useStaticQuery(graphql`
@@ -231,7 +386,10 @@ const Jamaica = () => {
             </div>
           </div>
           <JamaicaInvestBlock />
-          <JamaicaBlock2 />
+          <div className="bmb-opp-link">
+            <AnchorLink href="#lpfooter">Get Started</AnchorLink>
+          </div>
+          <BmbBlock></BmbBlock>
           <div className="jamaica-bottom-3">
             <div>
               <div className="jamaica-bottom-large">1,550+</div>

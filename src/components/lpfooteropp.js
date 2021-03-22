@@ -377,12 +377,12 @@ const LpFooter = () => {
           <div className="form-copy">
             <p>
               With a minimum investment of $25,000, investing in{" "}
-              <span class="footer-bmb">Blue Mountain Best</span> secures profits
-              from a luxury estate primed for worldwide retail growth. As an
-              investor, you join{" "}
-              <span class="footer-bmb">Blue Mountain Best</span> and hundreds of
-              family farms in a partnership to open Jamaican coffee to the
-              global luxury market.
+              <span class="footer-mt">Massive Therapeutics</span> guarantees a
+              stake in cannabis production as the global industry looks to
+              Jamaica, while investment in{" "}
+              <span class="footer-bmb">Blue Mountain Best</span>
+              secures profits from a luxury estate primed for worldwide retail
+              growth.{" "}
             </p>
             <p>
               If you’re an accredited investor, fill out the form below and our
