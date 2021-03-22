@@ -376,7 +376,7 @@ const LpFooter = () => {
           <TitleBlock />
           <div className="form-copy">
             <p>
-              Investing in{" "}
+              With a minimum investment of $25,000, investing in{" "}
               <span className="footer-mt">Massive Therapeutics</span> guarantees
               a stake in cannabis production as the global industry looks to
               Jamaica, while investment in{" "}
