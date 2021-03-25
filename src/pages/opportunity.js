@@ -9,7 +9,9 @@ import styled from "styled-components"
 import Hero from "../components/hero"
 import Jamaica from "../components/jamaica"
 import Mt from "../components/mtyahoo"
+import MtMobile from "../components/mtyahoomobile"
 import LpFooter from "../components/lpfooteropp"
+import * as variable from "../components/variables"
 
 const IndexStyle = styled.div`
   .squaregrow-initial {
@@ -159,6 +161,17 @@ const IndexStyle = styled.div`
       transition-delay: 1s;
     }
   }
+  #mtyahoomobile {
+    display: none;
+  }
+  @media (max-width: ${variable.mobileWidth}) {
+    #jamaica {
+      display: none;
+    }
+    #mtyahoomobile {
+      display: block;
+    }
+  }
 `
 
 const IndexPage = () => {
@@ -168,6 +181,7 @@ const IndexPage = () => {
       <IndexStyle>
         <Hero />
         <Mt></Mt>
+        <MtMobile></MtMobile>
         <LpFooter />
       </IndexStyle>
     </Layout>
