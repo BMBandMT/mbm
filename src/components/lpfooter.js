@@ -10,6 +10,9 @@ import handleViewport from "react-in-viewport"
 const LpfooterStyle = styled.div`
   #lpfooter {
     padding: 100px 0px 60px 0px;
+    @media (max-width: ${variable.mobileWidth}) {
+      padding: 45px 0px 45px 0px;
+    }
     h2 {
       color: #000000;
       text-align: center;
@@ -19,6 +22,10 @@ const LpfooterStyle = styled.div`
       max-width: 500px;
       margin: 0 auto;
       padding-bottom: 3px;
+      @media (max-width: ${variable.mobileWidth}) {
+        font-size:23px;
+        line-height:23px;
+      }
     }
     .centergrow-initial {
       margin: 0 auto;
@@ -35,6 +42,10 @@ const LpfooterStyle = styled.div`
       font-weight: 400;
       max-width: 815px;
       margin: 20px auto 0px auto;
+      @media (max-width: ${variable.mobileWidth}) {
+        font-size:15px;
+        line-height:20px;
+      }
       span.footer-mt {
         color: #23a455;
       }
@@ -42,7 +53,10 @@ const LpfooterStyle = styled.div`
         color: #164871;
       }
     }
-    form {
+    form.mobile-form-footer{
+      display:none;
+    }
+    form.desktop-form-footer {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -82,6 +96,7 @@ const LpfooterStyle = styled.div`
           align-items: center;
           @media (max-width: ${variable.mobileWidth}) {
             flex-direction: column;
+            width:100%;
           }
           &.form-row-inputs-certify {
             @media (max-width: ${variable.mobileWidth}) {
@@ -338,6 +353,15 @@ const LpfooterStyle = styled.div`
       }
     }
   }
+  @media (max-width: ${variable.mobileWidth}) {
+    .desktop-form-footer{
+      display:none;
+    }
+    .mobile-form-footer{
+display:block;
+    }
+  }
+
 `
 const formTitle = props => {
   const { inViewport, forwardedRef } = props
@@ -394,6 +418,144 @@ const LpFooter = () => {
             netlify-honeypot="bot-field"
             data-netlify="true"
             action="/thanks"
+            className="desktop-form-footer"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
+            </p>
+            <div className="form-row">
+              <label>Your Name*</label>
+              <div className="form-row-inputs form-row-inputs-name">
+                <input
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  placeholder="First"
+                  required
+                />
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  placeholder="Last"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <label>Your City</label>
+              <div className="form-row-inputs form-row-inputs-city">
+                <input type="text" id="city" name="city" placeholder="City" />
+                <input
+                  type="text"
+                  id="state"
+                  name="state"
+                  placeholder="State"
+                />
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  placeholder="Country"
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <label>Your Email*</label>
+              <div className="form-row-inputs form-row-inputs-email">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g. hello@email.com"
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <label>Your Phone*</label>
+              <div className="form-row-inputs form-row-inputs-phone">
+                <input
+                  type="phone"
+                  id="phone"
+                  name="phone"
+                  placeholder="####"
+                  required
+                />
+              </div>
+            </div>
+            <div className="form-row">
+              <label>How did you hear about us?*</label>
+              <div className="form-row-inputs form-row-inputs-hear">
+                <select name="hear" id="hear" required>
+                  <option value="">Select...</option>
+                  <option value="Forbes">Forbes</option>
+                  <option value="Reuters">Reuters</option>
+                  <option value="Entrepreneur">Entrepreneur</option>
+                  <option value="Investing">Investing.com</option>
+                  <option value="Benzinga">Benzinga</option>
+                  <option value="CEO Magazine">CEO Magazine</option>
+                  <option value="Equities">Equities.com</option>
+                  <option value="Google">Google</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="YouTube">YouTube</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Email">Email</option>
+                  <option value="Referral">Referral</option>
+                </select>
+              </div>
+            </div>
+            <div className="form-row">
+              <label>Best Time to Call</label>
+              <div className="form-row-inputs form-row-inputs-time">
+                <div className="radio-container">
+                  <input type="radio" value="morning" name="times" />
+                  <div>Morning</div>
+                </div>
+                <div className="radio-container">
+                  <input type="radio" value="noon" name="times" />
+                  <div>Noon</div>
+                </div>
+                <div className="radio-container">
+                  <input type="radio" value="afternoon" name="times" />
+                  <div>Afternoon</div>
+                </div>
+                <div className="radio-container">
+                  <input type="radio" value="evening" name="times" />
+                  <div>Evening</div>
+                </div>
+              </div>
+            </div>
+            <div className="form-row">
+              <label></label>
+              <div className="form-row-inputs form-row-inputs-certify">
+                <input type="checkbox" id="certify" name="certify" required />{" "}
+                *I certify that I am an accredited investor.
+              </div>
+            </div>
+            <div className="form-row">
+              <label></label>
+              <div className="form-row-inputs form-row-inputs-submit">
+                <input
+                  type="submit"
+                  className="contact-submit"
+                  value="Submit"
+                />
+              </div>
+            </div>
+          </form>
+          <form
+            name="contact"
+            method="POST"
+            netlify-honeypot="bot-field"
+            data-netlify="true"
+            action="/thanks"
+            className="mobile-form-footer"
           >
             <input type="hidden" name="form-name" value="contact" />
             <p className="hidden">
