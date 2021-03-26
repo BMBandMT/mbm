@@ -164,12 +164,24 @@ const IndexStyle = styled.div`
   #mtyahoomobile {
     display: none;
   }
+  .mobile-invest{
+    display:none;
+  }
+  #mtyahoomobilebmb{
+    display:none;
+  }
   @media (max-width: ${variable.mobileWidth}) {
     #jamaica {
       display: none;
     }
     #mtyahoomobile {
       display: block;
+    }
+    .mobile-invest{
+      display:block;
+    }
+    #mtyahoomobilebmb{
+      display:block;
     }
   }
 `
