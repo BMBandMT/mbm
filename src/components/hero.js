@@ -405,7 +405,7 @@ const HeroStyle = styled.div`
         height:135px !important;
       }
       .mobile-bmb-logo{
-        width:135px !important;
+        width:141px !important;
         height:135px !important;
       }
       .mobile-hero-content{
