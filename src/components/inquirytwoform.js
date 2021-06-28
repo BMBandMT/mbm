@@ -389,7 +389,7 @@ const LpFooter = () => {
             </p>
           </div>
           <form
-            name="inquiry2"
+            name="ck3"
             method="POST"
             netlify-honeypot="bot-field"
             data-netlify="true"
