@@ -394,7 +394,7 @@ const LpFooter = () => {
             netlify-honeypot="bot-field"
             data-netlify="true"
           >
-            <input type="hidden" name="form-name" value="inquiry2" />
+            <input type="hidden" name="form-name" value="ck3" />
             <p className="hidden">
               <label>
                 Don’t fill this out if you’re human: <input name="bot-field" />
