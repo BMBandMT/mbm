@@ -389,12 +389,12 @@ const LpFooter = () => {
             </p>
           </div>
           <form
-            name="ck3"
+            name="ckthree"
             method="POST"
             netlify-honeypot="bot-field"
             data-netlify="true"
           >
-            <input type="hidden" name="form-name" value="ck3" />
+            <input type="hidden" name="form-name" value="ckthree" />
             <p className="hidden">
               <label>
                 Don’t fill this out if you’re human: <input name="bot-field" />
